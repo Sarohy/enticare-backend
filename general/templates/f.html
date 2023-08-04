@@ -1,0 +1,3701 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      :root{
+            --main: rgb(92, 49, 143);
+            --accent: rgb(190, 176, 213);
+            --border: rgb(93, 50, 141);
+        }
+      @page{
+        size: JIS-B3;
+      }
+          
+      @font-face {
+        font-family: "ITC Benguiat Gothic Book Regular";
+        src: url("../fonts/ITC_Benguiat_Gothic_Book_Regular.otf")
+          format("truetype");
+      }
+      @font-face {
+        font-family: "ITC Benguiat Gothic Medium";
+        src: url("../fonts/BenguiatGothic-Medium.otf") format("truetype");
+      }
+      .formPage1MainContainer {
+        border: 10px solid rgb(93, 50, 141);
+        padding: 2em;
+      }
+      .formPage1Header {
+        display: flex;
+      }
+
+      .formPage1HeaderLeft,
+      .formPage1HeaderRight {
+        width: 50%;
+      }
+
+      .formPage1HeaderLeft {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .formPage1HeaderRight {
+        color: rgb(92, 49, 143);
+        align-self: flex-end;
+        display : flex;
+        justify-content : end;
+      }
+      .formPage1HeaderRight h1 {
+        font-size: 2rem;
+      }
+
+      .formPage1HeaderLeft h1 {
+        font-size: 4rem;
+        font-weight: lighter;
+        color: rgb(92, 49, 143);
+        margin-left: 0.25em;
+      }
+
+      @media only screen and (max-width: 1200px) {
+        .formPage1HeaderRight h1 {
+          font-size: 2.5rem;
+        }
+      }
+
+      @media only screen and (max-width: 960px) {
+        .formPage1HeaderRight h1 {
+          font-size: 2rem;
+        }
+      }
+
+      @media only screen and (max-width: 770px) {
+        .formPage1Header {
+          flex-direction: column;
+        }
+        .formPage1HeaderLeft,
+        .formPage1HeaderRight {
+          width: 100%;
+        }
+        .formPage1HeaderRight h1 {
+          margin-left: 0.85em;
+          font-size: 1rem;
+        }
+        .formPage1HeaderLeft h1 {
+          font-size: 3rem;
+        }
+      }
+
+      /*form2*/
+      .formPage2Main {
+        border: 10px solid rgb(93, 50, 141);
+        padding: 2em;
+      }
+      .formPage2Main .heading {
+        color: rgb(92, 49, 143);
+        text-transform: uppercase;
+      }
+      /* .checkboxTranslate {
+      margin-left: 0.5em !important;
+     } */
+
+      .formSection1 {
+        width: 50%;
+      }
+      .formSection2 {
+        width: 50%;
+        margin-left: 2em;
+      }
+
+      .sectionHeightWeightInner {
+        line-height: 20px;
+      }
+
+      .heightWeightInput {
+        border: none;
+        border-bottom: 1px solid black;
+      }
+
+      .medicationsSection,
+      .allergiesSection,
+      .surgerySection,
+      .socialHistorySection,
+      .drugUseSection {
+        margin-top: 1em;
+      }
+
+      .medicationsSectionCheckbox,
+      .allergiesSectionCheckbox,
+      .surgerySectionCheckbox,
+      .familyHistorySectionCheckbox,
+      .socialHistorySectionCheckbox,
+      .drugUseSectionCheckbox {
+        margin-left: 1em;
+        width:90%;
+      }
+
+      .allergiesSectionInfo ul,
+      .medicationsSectionInfo ul {
+        margin-left: 1em;
+        font-weight: bold;
+      }
+
+      .allergiesSectionInfo p,
+      .medicationsSectionInfo p {
+        margin-left: 1.25em;
+      }
+
+      .allergiesSectionDetail,
+      .medicationsSectionDetail {
+        border: 1px solid black;
+        margin-top: 1em;
+      }
+      .allergiesSectionDetail input,
+      .medicationsSectionDetail input {
+        width: 100%;
+        border: none;
+        border-top: 1px solid black;
+        padding: 1em 0.5em;
+        outline: none;
+      }
+
+      .allergiesQuiz1Choices {
+        margin-left: 2em;
+        width:90%;
+      }
+
+      .allergiesSectionCheckbox div {
+        margin-left: 3em;
+      }
+
+      .surgerySectionInfo input {
+        border: none;
+        border-bottom: 1px solid black;
+        width: 100%;
+        outline: none;
+      }
+
+      .surgerySectionHead div {
+        text-align: center;
+        width: 50%;
+        background-color: rgb(190, 176, 213);
+        border: 1px solid rgb(92, 49, 143);
+      }
+      .historySectionDetail {
+        margin-top: 1em;
+      }
+
+      .historySectionHead div {
+        text-align: center;
+        width: 50%;
+        background-color: rgb(190, 176, 213);
+        border: 1px solid rgb(92, 49, 143);
+      }
+
+      .historySectionCondtion,
+      .historySectionRelationship {
+        border: 1px solid rgb(92, 49, 143);
+        padding: 1em;
+      }
+
+      .historySectionRelationship {
+        outline: none;
+      }
+
+      .socialHistorySmoker input {
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid black;
+      }
+
+      .drugUseSectionFemaleOnly {
+        padding: 1em;
+        margin-top: 1em;
+      }
+
+      @media only screen and (max-width: 1450px) {
+        .sectionHeightWeightInner h3 {
+          font-size: 0.95rem;
+        }
+        .sectionHeightWeight {
+          flex-direction: column;
+        }
+        .sectionHeightWeightBlanks {
+          width: 100%;
+        }
+      }
+
+      @media only screen and (max-width: 1450px) {
+        .allergiesQuiz1 {
+          {% comment %} flex-direction: column;
+          align-items: start; {% endcomment %}
+          margin-top: 1em;
+        }
+        .socialHistorySectionCheckbox,
+        .allergiesQuiz1Choices {
+          margin-left: 0;
+          {% comment %} margin-top: 0.25em; {% endcomment %}
+          flex-wrap: wrap;
+        }
+        {% comment %} .socialHistoryQuiz {
+          flex-direction: column;
+          align-items: start;
+          margin: 0;
+        } {% endcomment %}
+      }
+
+      @media only screen and (max-width: 1000px) {
+        .formPage2Main {
+          flex-direction: column;
+        }
+        .formSection1 {
+          width: 100%;
+        }
+        .formSection2 {
+          width: 100%;
+        }
+        .formSection2 {
+          margin-left: 0;
+        }
+      }
+
+      @media only screen and (max-width: 700px) {
+        .familyHistorySectionText,
+        .allergiesSectionInfo ul,
+        .medicationsSectionInfo ul {
+          font-weight: bold;
+          font-size: 0.75rem;
+        }
+      }
+
+      @media only screen and (max-width: 550px) {
+        .surgerySectionQuiz1 {
+          flex-direction: column;
+          align-items: start;
+        }
+        .femaleOnlyQuiz,
+        .socialHistoryQuiz2 {
+          flex-direction: column;
+          align-items: start;
+          margin: 0;
+        }
+        .surgerySectionCheckbox {
+          margin: 0;
+        }
+        .drugUseSectionCheckbox {
+          margin-left: 0;
+        }
+        .historySectionHead h3,
+        .surgerySectionHead h3 {
+          font-size: 0.85rem;
+        }
+      }
+      /*form4*/
+      .FormPage4Main {
+        border: 10px solid rgb(93, 50, 141);
+        padding: 2em;
+      }
+
+      .FormPage4Section1 {
+        width: 50%;
+      }
+
+      .FormPage4Section2 {
+        width: 50%;
+        margin-left: 2em;
+      }
+
+      .formPage4Radio {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 5px;
+      }
+
+      .formPage4Head {
+        text-align: center;
+      }
+
+      .formPage4Head h2 {
+        color: rgb(92, 49, 143);
+      }
+
+      .sleepnessScaleDetail ul {
+        margin-left: 2em;
+      }
+
+      .page4Table {
+        margin-top: 1em;
+      }
+
+      .sleepnessScaleSectionMeasures {
+        margin-left: 1em;
+        font-size: 1rem;
+        margin-top: 0.5em;
+      }
+
+      .sleepnessScaleSectionMeasures span {
+        margin-left: 1em;
+      }
+
+      .page4TableHead div {
+        text-align: center;
+        background-color: rgb(190, 176, 213);
+        border: 1px solid rgb(92, 49, 143);
+      }
+
+      .page4TableItem1,
+      .page4TableItem2 {
+        border: 1px solid rgb(92, 49, 143);
+        padding: 0.5em;
+        outline: none;
+      }
+
+      .page4TableItem1 {
+        width: 60%;
+      }
+
+      .page4TableItem2 {
+        width: 40%;
+      }
+
+      .page4TableHeadPart1 {
+        width: 60%;
+      }
+      .page4TableHeadPart2 {
+        width: 40%;
+      }
+
+      .HearingHistorySection {
+        margin-top: 2em;
+      }
+
+      .allergyHistoryBlanks input {
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid black;
+      }
+
+      @media only screen and (max-width: 1000px) {
+        .FormPage4Main {
+          flex-direction: column;
+        }
+        .FormPage4Section1 {
+          width: 100%;
+        }
+        .FormPage4Section2 {
+          width: 100%;
+          margin-left: 0;
+        }
+      }
+      @media only screen and (max-width: 1000px) {
+        .FormPage4Main h3 {
+          font-size: 0.75rem;
+        }
+      }
+      /*formsection*/
+      /* Form Section 1 */
+
+      .fs1MainContainer {
+        height: auto;
+        border: 1px solid black;
+        padding: 10px;
+        margin-top: 20px;
+      }
+
+      .fs1Section1,
+      .fs1Section2 {
+        display: flex;
+      }
+
+      .fs1Section2 {
+        margin-top: 1em;
+      }
+
+      .fs7SymptomsContainerCheckboxes {
+        width:90%;
+      }
+
+      .fs1MainContainer input {
+        border: 0;
+        border-bottom: 1px solid black;
+        width: 100%;
+      }
+
+      .fs1SectionHead h3 {
+        font-size: 1rem;
+        color: rgb(92, 49, 143);
+      }
+
+      .fs1ItemVisit {
+        width: 70%;
+        display: flex;
+      }
+
+      .fs1ItemDate {
+        width: 30%;
+        margin-left: 1em;
+        display: flex;
+      }
+
+      .fs1ItemRel {
+        width: 60%;
+        display: flex;
+      }
+
+      .fs1ItemLeg {
+        width: 50%;
+        margin-left: 1em;
+        display: flex;
+      }
+
+      /* Form Section 2 */
+
+      .fs2MainContainer {
+        margin-top: 2%;
+      }
+
+      .fs2Heading {
+        color: rgb(92, 49, 143);
+        font-size: 24px;
+        text-transform: capitalize;
+      }
+
+      .fs2TranslateHeading {
+        color: black;
+        font-size: 14px;
+        /* margin-top: -10px; */
+        font-style: italic;
+        text-transform: capitalize;
+      }
+
+      .fs2Conatiner {
+        display: flex;
+        align-items: center;
+        margin-top: 1em;
+      }
+
+      .fs2CheckboxConatiner {
+        display: flex;
+      }
+
+      {% comment %} .fs2CheckboxConatinerMargin {
+        margin-left: 2em;
+      } {% endcomment %}
+
+      .fs2InputConatiner input {
+        width: 100%;
+        border: 0;
+        border-bottom: 1px solid black;
+      }
+
+      .fs2InputConatinerHead {
+        color: rgb(92, 49, 143);
+      }
+
+      .fs2DOBContainer {
+        display: flex;
+        width: 25%;
+      }
+
+      .fs2dateStyle {
+        width: 100%;
+        border-radius: 0px;
+        border-top: 0px;
+        border-left: 0px;
+        border-right: 0px;
+        margin-left: 2%;
+        padding: 0% !important;
+      }
+
+      .fs4Conatiner {
+        display: flex;
+        align-items: center;
+        margin-top: 1em;
+      }
+      .fs4CheckboxConatiner {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .fs2dateStyle:hover {
+        border-color: rgb(92, 49, 143);
+        border-radius: 0px;
+        border-top: 0px;
+        border-left: 0px;
+        box-shadow: none;
+        border-right: 0px;
+      }
+
+      .fs2dateStyle:hover {
+        border-color: rgb(92, 49, 143);
+        border-radius: 0px;
+        border-top: 0px;
+        border-left: 0px;
+        border-right: 0px;
+      }
+
+      .fs2DOBText {
+        color: rgb(92, 49, 143);
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .fs2DOBTranslatorText {
+        color: black;
+        font-size: 10px;
+        font-style: italic;
+        width: 102px;
+        {% comment %} margin-top: -6px; {% endcomment %}
+      }
+
+      .fs2SexContainer {
+        display: flex;
+        width: 50%;
+        justify-content: space-between;
+        margin-top: 0.5%;
+      }
+
+      .fs2TranslatorContainer {
+        display: flex;
+        font-size: 10px;
+        font-style: italic;
+        padding-right: 10px;
+      }
+
+      .fs2SubHeading {
+        font-size: 16px;
+        color: rgb(92, 49, 143);
+        margin-right: 20px;
+      }
+
+      .fs2Border {
+        border: 4px solid rgb(211, 182, 239);
+        margin-top: 2%;
+      }
+
+      /* Form Section 3 */
+
+      .fs3MainContainer {
+        margin-top: 2%;
+      }
+
+      .fs3Container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1%;
+      }
+
+      .fs3CheckBox {
+        margin-top: 1%;
+      }
+
+      .fs3CustomStyling input {
+        border: none;
+        width: 100%;
+        border-bottom: 1px solid black;
+      }
+
+      .fs3CustomStyling {
+        display: flex;
+      }
+
+      .fs3labels h3 {
+        color: rgb(92, 49, 143);
+      }
+
+      .fs3TranslatorText {
+        color: black;
+        font-size: 10px;
+        font-style: italic;
+        margin-top: -5px;
+        margin-left: 2.3em;
+      }
+
+      .fs3HeadingInsurance {
+        font-size: 24px;
+        font-weight: 800;
+        margin-top: 1%;
+      }
+
+      .fs3TranslatorHI {
+        color: black;
+        font-size: 14px;
+        font-style: italic;
+        margin-top: -10px;
+      }
+
+      .fs3DOBContainer {
+        display: flex;
+        width: 60%;
+      }
+
+      /* Form Section 4 */
+
+      .fs4MainContainer {
+        margin-top: 2%;
+      }
+
+      .fs4PrivacyHeading {
+        font-size: 18px;
+        font-weight: 600;
+        font-style: italic;
+      }
+
+      .fs4SubHeading {
+        font-size: 16px;
+        color: rgb(92, 49, 143);
+        margin-right: 20px;
+        /* width: 200px; */
+      }
+
+      .fs4SubHeading h3 {
+        color: rgb(92, 49, 143);
+      }
+
+      .fs4TranslatorPrivacyHeading {
+        color: black;
+        font-size: 10px;
+        font-style: italic;
+        margin-top: -5px;
+      }
+
+      .fs4TextStyling {
+        margin-top: 1%;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .fs4RadioButtonContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1%;
+      }
+
+      .fs4TranslatorContainer {
+        display: flex;
+        font-size: 10px;
+        font-style: italic;
+      }
+
+      .fs4RItem1 {
+        margin-left: 5%;
+      }
+
+      .fs4RItem2 {
+        margin-left: 4%;
+      }
+
+      .fs4RItem3 {
+        margin-left: 3.5%;
+      }
+
+      .fs4RItem4 {
+        margin-left: 3.5%;
+      }
+
+      .fs4RItem5 {
+        margin-left: 5.5%;
+      }
+
+      .fs4RItem6 {
+        margin-left: 9%;
+      }
+
+      .fs4RItem7 {
+        margin-left: 12%;
+        margin-right: 2%;
+      }
+
+      .fs4ETranslatorContainer {
+        display: flex;
+        justify-content: space-between;
+        padding: 0px 5.2%;
+      }
+
+      .fs4LTranslatorContainer {
+        display: flex;
+        justify-content: space-between;
+        padding-left: 5%;
+        padding-right: 8%;
+      }
+
+      .fs4Heading {
+        font-size: 20px;
+        font-weight: 600;
+        color: rgb(92, 49, 143);
+        margin-top: 1%;
+      }
+
+      .fs4HeadingTranslator {
+        color: black;
+        font-size: 12px;
+        font-style: italic;
+      }
+
+      .fsListItem {
+        font-size: 16px;
+        font-weight: 600;
+        font-style: italic;
+      }
+
+      .fs4Container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1%;
+      }
+
+      /* Form Section 5 and 6 */
+      .formPage3Main {
+        border: 10px solid rgb(93, 50, 141);
+        padding: 2em;
+      }
+      .fs5Main {
+      }
+
+      .fs5Section1 {
+        width: 50%;
+        /* padding:2em */
+      }
+      .fs5Section2 {
+        width: 50%;
+        margin-left: 2em;
+        padding-left: 1em;
+        border-left: 5px solid rgb(190, 176, 213);
+      }
+
+      .fs5RadioContainer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1%;
+      }
+
+      .fs5CheckboxContainer {
+        width: 30%;
+      }
+
+      .fs5RadioHeading {
+        width: 100%;
+        font-size: 14px;
+      }
+
+      .fs5RadioHeadingTranslation {
+        font-size: 10px;
+        margin-left: 5px;
+        font-style: italic;
+      }
+
+      .fs5Heading {
+        /* font-size: 18px; */
+        color: rgb(92, 49, 143);
+      }
+
+      .fs5BoldText {
+        font-weight: 900;
+      }
+
+      .medicHistoryText {
+        display: flex;
+        align-items: center;
+        color: rgb(92, 49, 143);
+      }
+
+      .medicHistoryText h3 {
+        font-weight: 500;
+      }
+
+      .fs5TranslationText {
+        color: black;
+        font-size: 10px;
+        font-style: italic;
+        /* margin-top: -5px; */
+        margin-bottom: 0.5%;
+      }
+      .fs5SubHeading {
+        font-size: 16px;
+      }
+
+      .fs5Border {
+        border: 4px solid rgb(211, 182, 239);
+        margin-top: 4%;
+      }
+      /* Form Section 7 */
+
+      .fs7TextContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align:center;
+        margin-top: 2%;
+        width:100%;
+        margin-left:400px;
+      }
+
+      .fs7MainHeading {
+        /* font-size: 30px; */
+        color: rgb(92, 49, 143);
+        width:100%;
+      }
+
+      .fs7Heading {
+        font-size: 14px;
+        font-weight: 900;
+        text-align: center;
+        margin-bottom: 0.5%;
+      }
+
+      .fs7RangeText {
+        font-size: 20px;
+        font-weight: 900;
+        text-align: center;
+        /* margin-top: 2%; */
+        width: 100%;
+      }
+
+      .fs7spanBorder {
+        color: rgb(190, 176, 213);
+        /* margin-right: 1%; */
+      }
+
+      .fs7TranslationText {
+        color: black;
+        font-size: 14px;
+        font-style: italic;
+        margin-bottom: 0.5%;
+        width: 100%;
+        text-align: center;
+      }
+
+      .fs7ScoreTable {
+        border: 2px solid;
+        width: 100%;
+        height: auto;
+        margin-top: 4%;
+        border-bottom: 0px;
+      }
+
+      .fs7ScoreTableRow {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 2px solid;
+      }
+
+      .fs7Heading {
+        width: 70%;
+        margin-right: 10px;
+      }
+
+      .fs7text {
+        font-size: 14px;
+      }
+
+      .fs7TotalHeading {
+        font-size: 18px;
+        font-weight: 900;
+        width: 100%;
+      }
+
+      .fs7ScoreCalculation {
+        display: flex;
+        margin-top: 2em;
+      }
+
+      .fs7InputFieldContainer {
+        width: 20%;
+        padding: 0px 5px;
+        margin-top: -13px;
+      }
+
+      .fs7SymptomsContainer {
+        display: flex;
+        /* justify-content: space-between; */
+        margin-top: 1em;
+      }
+
+      .fs7SymptomsText {
+        font-size: 12px;
+      }
+
+      .fs7SymptomsText h3 {
+        /* font-size: 12px; */
+        /* font-weight: 900; */
+      }
+
+      .fs7TranslatorSymp {
+        color: black;
+        font-size: 10px;
+        font-style: italic;
+        margin-top: -10px;
+        padding-right: 12%;
+      }
+
+      .fs8Container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .fs8HeightInputField {
+        width: 50%;
+      }
+
+      .fs8WeigthInputField {
+        width: 50%;
+      }
+
+      .fs8Border {
+        border: 2px solid rgb(211, 182, 239);
+        margin: 2% 0%;
+      }
+
+      .fs8MedicationTable {
+        display: flex;
+        flex-direction: column;
+        border-top: 1px solid;
+      }
+
+      /* common input props */
+
+      input[type="text"] {
+        border-top: 0px;
+        border-bottom: 1px solid;
+        border-left: 1px solid;
+        border-right: 1px solid;
+        padding: 2%;
+        outline: none;
+      }
+      input[type="text"]:hover {
+        border: 1px solid black;
+        color: #000000;
+        outline: none;
+      }
+
+      input[type="text"]:focus {
+        border: 1px solid black;
+        outline: none;
+      }
+
+      @media only screen and (max-width: 1200px) {
+        .fs2Conatiner {
+          flex-direction: column;
+          align-items: start;
+        }
+
+        .fs2CheckboxConatinerMargin {
+          margin-left: 0;
+        }
+        .fs2InputConatiner {
+          width: 100% !important;
+          margin-left: 0;
+        }
+
+        .fs2InputConatiner .fs2InputConatinerHead {
+          width: 200px !important;
+        }
+
+        .fs2SubHeading {
+          width: 150px;
+        }
+
+        .fs2SubHeadingLong {
+          width: 200px;
+        }
+
+        .fs3CustomStyling {
+          width: 100% !important;
+        }
+        .fs3labels {
+          width: 590px !important;
+        }
+        .fs3DOBContainer {
+          width: 100%;
+        }
+
+        .fs3Container,
+        .fs4Container {
+          display: block;
+        }
+        .fs3labels.fs4labels {
+          width: 190px !important;
+        }
+      }
+
+      @media only screen and (max-width: 1000px) {
+        .fs5Main {
+          flex-direction: column;
+        }
+        .fs7ScoreCalculation h3 {
+          font-size: 0.75rem;
+        }
+
+        .fs5Section1 {
+          width: 100%;
+        }
+        .fs5Section2 {
+          width: 100%;
+          margin-left: 0;
+          padding-left: 0;
+          border-left: none;
+        }
+
+        .fs1Section1,
+        .fs1Section2 {
+          flex-direction: column;
+        }
+
+        .fs1MainContainer input {
+          width: 70%;
+          align-self: right;
+        }
+
+        .fs1ItemVisit {
+          width: 100%;
+        }
+
+        .fs1ItemDate {
+          width: 100%;
+          margin-left: 0;
+        }
+
+        .fs1ItemRel {
+          width: 100%;
+        }
+
+        .fs1ItemLeg {
+          width: 100%;
+          margin-left: 0;
+        }
+        .fs1SectionHead {
+          width: 50%;
+        }
+
+        .fs3Container {
+          display: block;
+        }
+        .formItem .ant-input {
+          width: 100%;
+        }
+        .fs3CustomStyling {
+          width: 100% !important;
+          display: flex;
+        }
+      }
+
+      @media only screen and (max-width: 660px) {
+        .fs7SymptomsContainer {
+          flex-direction: column;
+        }
+
+        .fs7SymptomsContainerCheckboxes {
+          margin-left: 0;
+        }
+
+        .fs1SectionHead h3 {
+          font-size: 0.75rem;
+        }
+      }
+
+      @media only screen and (max-width: 470px) {
+        .fs5RadioContainer {
+          flex-direction: column;
+        }
+
+        .fs5CheckboxContainer {
+          width: 100%;
+        }
+
+        .fs5SubHeading {
+          font-size: 0.75rem;
+        }
+        .medicHistoryText {
+          font-size: 12px;
+        }
+        .fs5Heading {
+          font-size: 14px;
+        }
+
+        .fs2CheckboxConatinerLong {
+          flex-direction: column;
+        }
+
+        .fs2CheckboxConatinerLongInner {
+          flex-direction: column;
+          width: 150px;
+        }
+
+        .fs1SectionHead {
+          width: 80%;
+        }
+        .fs1SectionHead h3 {
+          font-size: 0.55rem;
+        }
+      }
+      /*formUrlComponent*/
+      .formSectionDivision {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .formSectionLeftHalf {
+        width: 50%;
+        padding: 2em;
+      }
+
+      .formSectionRightHalf {
+        width: 50%;
+        margin-left: 2em;
+        padding: 2em;
+        border-left: 5px solid rgb(190, 176, 213);
+      }
+
+      @media only screen and (max-width: 1000px) {
+        .formSectionDivision {
+          flex-direction: column;
+        }
+        .formSectionLeftHalf {
+          width: 100%;
+        }
+        .formSectionRightHalf {
+          width: 100%;
+          margin-left: 0;
+        }
+      }
+      /*index*/
+      body {
+        margin: 0;
+        font-family: "ITC Benguiat Gothic Medium",
+          "ITC Benguiat Gothic Book Regular";
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* code {
+      font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New','ITC Benguiat Gothic Book Regular','ITC Benguiat Gothic Medium',
+          monospace;
+     } */
+
+      :root {
+        --main: rgb(92, 49, 143);
+        --accent: rgb(190, 176, 213);
+        --border: rgb(93, 50, 141);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      span,
+      p,
+      ul,
+      li {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      .flex {
+        display: flex;
+      }
+
+      .flex-wrap {
+        flex-wrap: wrap;
+      }
+
+      .align-items-center {
+        align-items: center;
+      }
+
+      .align-items-start {
+        align-items: start;
+      }
+
+      .justify-content-between {
+        justify-content: space-between;
+      }
+
+      .justify-content-start {
+        justify-content: start;
+      }
+
+      .italics {
+        font-style: italic;
+        font-size: x-small;
+      }
+
+      .divider {
+        width: 100%;
+        content: "";
+        height: 6px;
+        background-color: rgb(190, 176, 213);
+        margin-top: 1em;
+      }
+
+      .border {
+        border: 1px solid black;
+      }
+
+      .headFontSize {
+        font-size: 1rem;
+      }
+
+      .w-50 {
+        width: 50%;
+      }
+
+      .w-100 {
+        width: 100%;
+      }
+
+      .mr-1 {
+        margin-right: 1em;
+      }
+
+      .mr-2 {
+        margin-right: 2em;
+      }
+
+      .ml-1 {
+        margin-left: 1em;
+      }
+
+      .ml-2 {
+        margin-left: 2em;
+      }
+
+      .mt-1 {
+        margin-top: 1em;
+      }
+
+      .mt-2 {
+        margin-top: 1em;
+      }
+
+      .radio-custom:checked label {
+        /* color: rgb(81, 18, 159); */
+        font-weight: 500;
+        font-size: 1rem;
+      }
+
+      .radio-main {
+        display: flex;
+        align-items: center;
+
+         margin-left: 1em;
+      }
+
+      .radio-main label {
+        font-size: 0.89rem;
+        margin-left: 0.25em;
+      }
+
+      input[type="radio"] {
+        width: 15px;
+        height: 2em;
+        border: 1px solid rgb(193, 1, 1);
+      }
+
+      input[type="text"] {
+        border: none !important;
+        border-bottom: 1px solid black !important;
+        outline: none;
+      }
+
+      .pointer_events_none {
+        pointer-events: none;
+      }
+
+      .pointer_events_none input {
+        border: 6px solid rgb(216, 213, 213);
+        background-color: rgb(210, 208, 208);
+      }
+      .customPaddingOpt {
+        padding-right: 15px;
+      }
+
+      @media (max-width: 1440px) {
+        .custom-radioBtn {
+          margin-right: 15px;
+        }
+      }
+      @media (max-width: 1024px) {
+        .fs7ScoreCalculation {
+          display: block;
+        }
+      }
+      .fs7ScoreCalculationFDiv,
+      .fs7ScoreCalculationSDiv {
+        display: flex;
+      }
+      .custom-radioBtn1 {
+        padding-right: 5px;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="formPage1MainContainer">
+      <div class="formPage1Header">
+        <div class="formPage1HeaderLeft">
+          <div class="ml-2" style="width: 150px;margin-bottom:15px">
+            <img
+              src="/home/taloot/Downloads/logo.png"
+              alt="logo"
+              width="100%"
+              height="100%"
+            />
+          </div>
+          <h1>Enticare</h1>
+        </div>
+        <div class="formPage1HeaderRight" style="display : flex; justify-content : end;">
+          <h1 style="display : flex; justify-content : end;">NEW PATIENT PACKET</h1>
+        </div>
+      </div>
+
+      <!-- <Form> -->
+      <div class="fs1MainContainer">
+        <div class="fs1Section1">
+          <div class="fs1ItemVisit">
+            {% comment %} <div class="fs1SectionHead"> {% endcomment %}
+              <div class="fs1SectionHead" style="width: 270px">
+              <h3>REASON FOR TODAY’S VISIT</h3>
+              <p class="italics">MOTIVO DE LA VISITA DE HOY</p>
+            </div>
+            <input
+              type="text"
+              value="{{start.reason_for_visit}}"
+              name="reason_for_visit"
+            />
+          </div>
+          <div class="fs1ItemDate">
+            <div class="fs1SectionHead">
+              <h3>DATE:</h3>
+              <p class="italics">FECHA</p>
+            </div>
+            <input type="text" value="{{start.date}}" name="date" />
+          </div>
+        </div>
+
+        <div class="fs1Section2">
+          <div class="fs1ItemRel" style="width: 70%">
+            {% comment %} <div class="fs1SectionHead"> {% endcomment %}
+              <div class="fs1SectionHead" style="width: 260px">
+              <h3>RELATIONSHIP TO PATIENT:</h3>
+              <p class="italics">RELACIÓN CON EL PACIENTE</p>
+            </div>
+            <input
+              type="text"
+              value="{{start.relationship_to_patient}}"
+              name="relationship_to_patient"
+            />
+          </div>
+          <div class="fs1ItemLeg" style="width: 30%">
+            <div class="fs1SectionHead">
+              <h3>LEGAL GUARDIAN:</h3>
+              <p class="italics">GUARDIÁN LEGAL</p>
+            </div>
+            <input
+              type="text"
+              value="{{start.legal_guradian}}"
+              name="legal_guradian"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="fs2MainContainer">
+        <h1 class="fs2Heading">PATIENT INFORMATION:</h1>
+        <p class="fs2TranslateHeading">NFORMACION DEL PACIENTE</p>
+
+        <div class="fs2Conatiner">
+          <div class="flex fs2InputConatiner" style="width: 50%">
+            <div class="fs2InputConatinerHead" style="width: 150px">
+              <h3>Patient Name:</h3>
+              <p class="italics">Nombre del paciente</p>
+            </div>
+            <input
+              type="text"
+              name="patient_name"
+              value="{{patient_info.patient_name}}"
+            />
+          </div>
+
+          <div
+            class="flex fs2InputConatiner fs2CheckboxConatinerMargin"
+            style="width: 50%"
+          >
+            <div class="fs2InputConatinerHead fs3labels" style="width: 150px">
+              <h3>DOB</h3>
+              <p class="italics">Fecha de nacimiento</p>
+            </div>
+            <input
+              class="fs2dateStyle"
+              name="DOB"
+              value="{{patient_info.DOB}}"
+            />
+            <!-- <DatePicker
+                      class="fs2dateStyle"
+                      onChange={onChangeDate}
+                      name="DOB"
+                    /> -->
+          </div>
+
+          <div
+            class="flex fs2InputConatiner fs2CheckboxConatinerMargin"
+            style="width: 50%"
+          >
+            <div class="fs2InputConatinerHead" style="width: 50px">
+              <h3>Age:</h3>
+              <p class="italics">Edad</p>
+            </div>
+            <input type="text" name="age" value="{{patient_info.age}}" />
+          </div>
+        </div>
+
+        <div class="fs2Conatiner">
+          {% comment %} <div class="fs2CheckboxConatiner fs2CheckboxConatinerMargin"> {% endcomment %}
+            <div
+            class="fs2CheckboxConatiner fs2CheckboxConatinerMargin"
+            style="margin-right: 100px; width:50%">
+            <div class="fs2SubHeading">
+              <p>Sex:</p>
+              <p class="italics">Sexo</p>
+            </div>
+            {% comment %} <div class="flex flex-wrap" id="genderSelection"> {% endcomment %}
+              <!-- <div style="display: flex" id="genderSelection"></div> -->
+              <div class="flex flex-wrap" style="width:50%">
+                <div>
+                  <div class="radio-main">
+                    <input type="radio" name="sex" class="radio-custom" id="Male"
+                    value="Male" {% if patient_info.sex == "Male"%}checked{% endif %}
+                    /><label for="Male">Male</label>
+                  </div>
+                  <p class="italics checkboxTranslate">Hombre</p>
+                </div>
+                <div>
+                  <div class="radio-main">
+                    <input type="radio" name="sex" class="radio-custom"
+                    id="Female" value="Female" {% if patient_info.sex == "Female"%}checked{% endif %} /><label for="Female">Female</label>
+                  </div>
+                  <p class="italics checkboxTranslate">Mujer</p>
+                </div>
+            </div>
+          </div>
+
+          <div class="fs2CheckboxConatiner fs2CheckboxConatinerMargin"
+            style="margin-right: 100px; width:50%">
+            <div class="fs2SubHeading">
+              <p>Marital Status:</p>
+              <p class="italics">Soltero</p>
+            </div>
+            <div class="flex" style="width:80%">
+                <div class="flex">
+                  <div class="radio-main">
+                    <input type="radio" name="maritial_status"
+                    class="radio-custom" id="Single" value="Single"
+                    {% if patient_info.maritial_status == "Single"%}checked{% endif %}/><label for="Single">Single</label>
+                  </div>
+                  <p class="italics checkboxTranslate"></p>
+                </div >
+                <div class="flex">
+                  <div class="radio-main">
+                    <input type="radio" name="maritial_status"
+                    class="radio-custom" id="Married" value="Married"
+                    {% if patient_info.maritial_status == "Married"%}checked{% endif %}/><label for="Married">Married</label>
+                  </div>
+                  <p class="italics checkboxTranslate"></p>
+                </div>
+                <div class="flex">
+                  <div class="radio-main">
+                    <input type="radio" name="maritial_status"
+                    class="radio-custom" id="Divorced" value="Divorced"
+                    {% if patient_info.maritial_status == "Divorced"%}checked{% endif %}/><label for="Divorced">Divorced</label>
+                  </div>
+                  <p class="italics checkboxTranslate"></p>
+                </div>
+                <div class="flex">
+                  <div class="radio-main">
+                    <input type="radio" name="maritial_status"
+                    class="radio-custom" id="Widowed" value="Widowed"
+                    {% if patient_info.maritial_status == "Widowed"%}checked{% endif %}/><label for="Widowed">Widowed</label>
+                  </div>
+                  <p class="italics checkboxTranslate"></p>
+                </div>
+                <div class="flex">
+                  <div class="radio-main">
+                    <input type="radio" name="maritial_status"
+                    class="radio-custom" id="Other" value="Other"
+                    {% if patient_info.maritial_status == "Other"%}checked{% endif %}/><label for="Other">Other</label>
+                  </div>
+                  <p class="italics checkboxTranslate"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="fs2Conatiner">
+          <div class="flex fs2InputConatiner" style="width: 50%">
+            <div class="fs2InputConatinerHead" style="width: 200px">
+              <h3>Mailing Address:</h3>
+              <p class="italics">Dirección de envio</p>
+            </div>
+            <input
+              type="text"
+              name="address"
+              value="{{mailing_address.address}}"
+            />
+          </div>
+
+          <div
+            class="flex fs2InputConatiner fs2CheckboxConatinerMargin"
+            style="width: 50%"
+          >
+            <div class="fs2InputConatinerHead" style="width: 80px">
+              <h3>City:</h3>
+              <p class="italics">Ciudad</p>
+            </div>
+            <input
+              type="text"
+              name="city"
+              value="{{mailing_address.city}}"
+            />
+          </div>
+
+          <div
+            class="flex fs2InputConatiner fs2CheckboxConatinerMargin"
+            style="width: 50%"
+          >
+            <div class="fs2InputConatinerHead" style="width: 80px">
+              <h3>State:</h3>
+              <p class="italics">Estado</p>
+            </div>
+            <input
+              type="text"
+              name="state"
+              value="{{mailing_address.state}}"
+            />
+          </div>
+
+          <div
+            class="flex fs2InputConatiner fs2CheckboxConatinerMargin"
+            style="width: 50%"
+           >
+            <div class="fs2InputConatinerHead" style="width: 100px">
+              <h3>Zip</h3>
+              <p class="italics">Codigo Postal</p>
+            </div>
+            <input
+              type="text"
+              name="zip"
+              value="{{mailing_address.zip}}"
+            />
+          </div>
+        </div>
+
+        <div class="fs2Conatiner">
+          <div class="flex fs2InputConatiner" style="width: 50%">
+            <div class="fs2InputConatinerHead" style="width: 200px">
+              <h3>Other Address:</h3>
+              <p class="italics">Otra dirección</p>
+            </div>
+            <input
+              type="text"
+              name="address"
+              value="{{other_address.address}}"
+            />
+          </div>
+
+          <div
+            class="flex fs2InputConatiner fs2CheckboxConatinerMargin"
+            style="width: 50%"
+          >
+            <div class="fs2InputConatinerHead" style="width: 80px">
+              <h3>City:</h3>
+              <p class="italics">Ciudad</p>
+            </div>
+            <input
+              type="text"
+              name="city"
+              value="{{other_address.city}}"
+            />
+          </div>
+
+          <div
+            class="flex fs2InputConatiner fs2CheckboxConatinerMargin"
+            style="width: 50%"
+          >
+            <div class="fs2InputConatinerHead" style="width: 80px">
+              <h3>State:</h3>
+              <p class="italics">Estado</p>
+            </div>
+            <input
+              type="text"
+              name="state"
+              value="{{ other_address.state}}"
+            />
+          </div>
+
+          <div
+            class="flex fs2InputConatiner fs2CheckboxConatinerMargin"
+            style="width: 50%"
+          >
+            <div class="fs2InputConatinerHead" style="width: 100px">
+              <h3>Zip</h3>
+              <p class="italics">Codigo Postal</p>
+            </div>
+            <input
+              type="text"
+              name="zip"
+              value="{{ other_address.zip}}"
+            />
+          </div>
+        </div>
+
+        <div class="fs2Conatiner">
+          <div class="flex fs2InputConatiner" style="width: 33%">
+            <div class="fs2InputConatinerHead" style="width: 150px">
+              <h3>Home Phone:</h3>
+              <p class="italics">Teléfono de casa</p>
+            </div>
+            <input
+              type="text"
+              name="home_phone"
+              value="{{ home_phone}}"
+            />
+          </div>
+
+          <div
+            class="flex fs2InputConatiner fs2CheckboxConatinerMargin"
+            style="width: 33%"
+          >
+            <div class="fs2InputConatinerHead" style="width: 150px">
+              <h3>Cell Phone:</h3>
+              <p class="italics">Teléfono movil</p>
+            </div>
+            <input
+              type="text"
+              name="cell_phone"
+              value="{{cell_phone}}"
+            />
+          </div>
+
+          <div
+            class="flex fs2InputConatiner fs2CheckboxConatinerMargin"
+            style="width: 33%"
+          >
+            <div class="fs2InputConatinerHead" style="width: 150px">
+              <h3>Work Phone:</h3>
+              <p class="italics">Teléfono de trabajo</p>
+            </div>
+            <input
+              type="text"
+              name="work_phone"
+              value="{{work_phone}}"
+            />
+          </div>
+        </div>
+
+        <div class="fs2Conatiner">
+          <div class="fs2CheckboxConatiner fs2CheckboxConatinerLong">
+            <div class="fs2SubHeading fs2SubHeadingLong">
+              <h3 style="font-size: 1rem">
+                Preferred method for appointment reminders
+                <span style="display: block"> (check all that apply): </span>
+              </h3>
+              <p class="italics">
+                Metodo preferido para recordatorios de citas
+              </p>
+            </div>
+
+            {% comment %} <div
+              class="flex flex-wrap fs2CheckboxConatinerLongInner"
+              id="appointmentRemindersSelection"
+            > {% endcomment %}
+              <!-- <div
+                style="display: flex"
+                id="appointmentRemindersSelection"
+              ></div> -->
+              <div class="flex flex-wrap fs2CheckboxConatinerLongInner" style="width:200%">
+                <div class="custom-radioBtn1">
+                  <div class="radio-main">
+                    <input type="radio" name="preffered_method"
+                    class="radio-custom" id="homephone" value="homephone"
+                    {% if preffered_method == "homephone"%}checked{% endif %} /><label for="homephone">Home Phone</label>
+                  </div>
+                  <p class="italics checkboxTranslate">Teléfono de casa</p>
+                </div>
+                <div class="custom-radioBtn1">
+                  <div class="radio-main">
+                    <input type="radio" name="preffered_method"
+                    class="radio-custom" id="cellphone" value="cellphone"
+                    {% if preffered_method == "cellphone"%}checked{% endif %} /><label for="cellphone">Cell Phone</label>
+                  </div>
+                  <p class="italics checkboxTranslate">Teléfono movil</p>
+                </div>
+                <div class="custom-radioBtn1">
+                  <div class="radio-main">
+                    <input type="radio" name="preffered_method"
+                    class="radio-custom" id="text" value="text"
+                    {% if preffered_method == "text"%}checked{% endif %}
+                    /><label for="text">Text</label>
+                  </div>
+                  <p class="italics checkboxTranslate">Texto</p>
+                </div>
+                <div class="custom-radioBtn1">
+                  <div class="radio-main">
+                    <input type="radio" name="preffered_method"
+                    class="radio-custom" id="email" value="email"
+                    {% if preffered_method == "email"%}checked{% endif %}
+                    /><label for="email">Email</label>
+                  </div>
+                  <p class="italics checkboxTranslate">Correo electronico</p>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fs2Conatiner">
+          <div class="flex fs2InputConatiner" style="width: 100%">
+            <div class="fs2InputConatinerHead" style="width: 300px">
+              <h3>Email (print clearly):</h3>
+              <p class="italics">Correo Electronico (imprima claramente)</p>
+            </div>
+            <input
+              type="text"
+              name="email"
+              value="{{email}}"
+            />
+          </div>
+        </div>
+
+        <div class="fs2Conatiner">
+          <div class="flex fs2InputConatiner" style="width: 40%">
+            <div class="fs2InputConatinerHead" style="width: 312px">
+              <h3>Pharmacy Name & City:</h3>
+              <p class="italics">Nombre de farmacia y ciudad</p>
+            </div>
+            <input
+              type="text"
+              name="pharmacy_name_city"
+              value="{{pharmacy_name_city}}"
+            />
+          </div>
+
+          <div
+            class="flex fs2InputConatiner fs2CheckboxConatinerMargin"
+            style="width: 30%"
+          >
+            <div class="fs2InputConatinerHead" style="width: 150px">
+              <h3>Cross Street:</h3>
+              <p class="italics">Calles que cruzan</p>
+            </div>
+            <input
+              type="text"
+              name="cross_street"
+              value="{{cross_street}}"
+            />
+          </div>
+
+          <div
+            class="flex fs2InputConatiner fs2CheckboxConatinerMargin"
+            style="width: 30%"
+          >
+            <div class="fs2InputConatinerHead" style="width: 100px">
+              <h3>Phone:</h3>
+              <p class="italics">Teléfono</p>
+            </div>
+            <input
+              type="text"
+              name="phone"
+              value="{{phone}}"
+            />
+          </div>
+        </div>
+
+        <div class="divider"></div>
+      </div>
+      <div class="fs3MainContainer">
+        <h1 class="fs2Heading">REFERRAL INFORMATION:</h1>
+        <p class="fs2TranslateHeading">INFORMACION REFERENCIAL</p>
+        <div class="fs3Container">
+          <div class="fs3CustomStyling" style="width: 70%">
+            <div class="fs3labels" style="width: 185px">
+              <h3>Referring Facility:</h3>
+              <p class="italics">Oficina de referencia</p>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.referring_facility}}"
+              name="referring_facility"
+            />
+          </div>
+
+          <div class="fs3CustomStyling" style="width: 28%">
+            <div class="fs3labels" style="width: 210px">
+              <h3>Address / Location:</h3>
+              <p class="italics">Nombre del paciente</p>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.address}}"
+              name="address"
+            />
+          </div>
+        </div>
+        <div class="fs3Container">
+          <div class="fs3CustomStyling" style="width: 70%">
+            <div class="fs3labels" style="width: 330px">
+              <h3>Referring Provider Full Name:</h3>
+              <p class="italics">Nombre complete dl proveedor de referencia</p>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.referring_provider_name.name}}"
+              name="name"
+            />
+          </div>
+          <div class="fs3CustomStyling" style="width: 28%">
+            <div class="fs3labels" style="width: 80px">
+              <h3>Phone:</h3>
+              <p class="italics">Teléfono</p>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.referring_provider_name.phone}}"
+              name="phone"
+            />
+          </div>
+        </div>
+
+        <div class="fs3Container">
+          <div class="fs3CustomStyling" style="width: 70%">
+            <div class="fs3labels" style="width: 405px">
+              <h3>Primary Care Physician Full Name:</h3>
+              <p class="italics">
+                Nombre complete del medico de atencion primaria
+              </p>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.primarycare_provider_name.name}}"
+              name="name"
+            />
+          </div>
+          <div class="fs3CustomStyling" style="width: 28%">
+            <div class="fs3labels" style="width: 80px">
+              <h3>Phone:</h3>
+              <p class="italics">Teléfono</p>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.primarycare_provider_name.phone}}"
+              name="phone"
+            />
+          </div>
+        </div>
+
+        <div class="fs3Conatiner fs3CheckBox">
+          <div>
+            <input type="checkbox" name="self_pay" class="radio-custom"
+            id={'self_pay'} checked={referral_info.selfPay} />
+            <label htmlFor="self_pay" style="font-size: 1rem"> Self Pay </label>
+          </div>
+        </div>
+        <div class="fs3TranslatorText">Sin Seguro</div>
+        <div class="fs3Container">
+          <div class="fs3CustomStyling" style="width: 70%">
+            <div class="fs3labels" style="width: 740px">
+              <h3>Responsible Party/Guardian (if patient is a minor):</h3>
+              <p class="italics">
+                Persona responsible (Si el paciente es menor de edad)
+              </p>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.responsible_party_guardian.guardian}}"
+              name="guardian"
+            />
+          </div>
+          <div class="fs3CustomStyling" style="width: 28%">
+            <div class="fs3labels" style="width: 80px">
+              <h3>Phone:</h3>
+              <p class="italics">Teléfono</p>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.responsible_party_guardian.phone}}"
+              name="phone"
+            />
+          </div>
+        </div>
+
+        <h3 class="fs3HeadingInsurance">Primary Insurance Detail</h3>
+        <p class="fs3TranslatorHI">Seguro Primario</p>
+
+        <div class="fs3Container">
+          <div class="fs3CustomStyling" style="width: 60%">
+            <div class="fs3labels" style="width: 300px">
+              <h3>PRIMARY INSURANCE CO:</h3>
+              <p class="italics">Seguro Primario</p>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.primary_insurance_detail.primary_insurance_co}}"
+              name="primary_insurance_co"
+            />
+          </div>
+          <div class="fs3CustomStyling" style="width: 38%">
+            <div class="fs3labels" style="width: 80px">
+              <h3>Phone:</h3>
+              <p class="italics">Teléfono</p>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.primary_insurance_detail.phone}}"
+              name="phone"
+            />
+          </div>
+        </div>
+
+        <div class="fs3Container">
+          <div class="fs3CustomStyling" style="width: 60%">
+            <div class="fs3labels" style="width: 210px">
+              <h3>Policy Holder Name:</h3>
+              <p class="italics">Nombre del titular de la póliza</p>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.primary_insurance_detail.policy_holder_name}}"
+              name="policy_holder_name"
+            />
+          </div>
+          <div class="fs3CustomStyling" style="width: 38%">
+            <div class="fs3labels" style="width: 95px">
+              <h3>Group #:</h3>
+              <p class="italics">Número de grupo</p>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.primary_insurance_detail.group}}"
+              name="group"
+            />
+          </div>
+        </div>
+
+        <div class="fs3Container">
+          <div class="fs3CustomStyling" style="width: 67%">
+            <div class="fs3labels" style="width: 265px">
+              <h3>Relationship to Patient:</h3>
+              <p class="italics">Relación con el paciente</p>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.primary_insurance_detail.relationship_to_patient}}"
+              name="relationship_to_patient"
+            />
+          </div>
+
+          <div class="fs3DOBContainer">
+            <div class="fs3labels">
+              <h3 class="fs2DOBText">DOB</h3>
+              <div class="fs2DOBTranslatorText">Fecha de nacimiento</div>
+            </div>
+            <input
+              class="fs2dateStyle"
+              name="dob"
+              value="{{referral_info.primary_insurance_detail.dob}}"
+            />
+            <!-- <DatePicker
+							class="fs2dateStyle"
+							onChange={(date, dateString) =>
+								onChangeDate(dateString, 'primary_insurance_detail')
+							}
+							name="dob"
+						/> -->
+          </div>
+        </div>
+
+        <h3 class="fs3HeadingInsurance">Secondary Insurance Detail</h3>
+        <p class="fs3TranslatorHI">Seguro Secundario</p>
+
+        <div class="fs3Container">
+          <div class="fs3CustomStyling" style="width: 60%">
+            <div class="fs3labels" style="width: 352px">
+              <h3>SECONDARY INSURANCE CO:</h3>
+              <p class="italics">Seguro Primario</p>
+            </div>
+            <input
+              type="text"
+              {% comment %} value="{{ referral_info.secondary_insurance_detail.secondary_insurance_co }}" {% endcomment %}
+              value="{{referral_info.secondary_insurance_detail.secondary_insurance_co}}"
+              name="secondary_insurance_co"
+            />
+          </div>
+          <div class="fs3CustomStyling" style="width: 38%">
+            <div class="fs3labels" style="width: 80px">
+              <h3>Phone:</h3>
+              <p class="italics">Teléfono</p>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.secondary_insurance_detail.phone}}"
+              name="phone"
+            />
+          </div>
+        </div>
+
+        <div class="fs3Container">
+          <div class="fs3CustomStyling" style="width: 60%">
+            <div class="fs3labels" style="width: 215px">
+              <h3>Policy Holder Name:</h3>
+              <p class="italics">Nombre del titular de la póliza</p>
+            </div>
+            <input
+              type="text"
+              {% comment %} value="{{referral_info.secondary_insurance_detail.policy_holder_name}}" {% endcomment %}
+              value="{{referral_info.secondary_insurance_detail.policy_holder_name}}"
+              name="policy_holder_name"
+            />
+          </div>
+          <div class="fs3CustomStyling" style="width: 38%">
+            <div class="fs3labels" style="width: 95px">
+              <h3>Group #:</h3>
+              <p class="italics">Número de grupo</p>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.secondary_insurance_detail.group}}"
+              name="group"
+            />
+          </div>
+        </div>
+
+        <div class="fs3Container">
+          <div class="fs3CustomStyling" style="width: 67%">
+            <div class="fs3labels" style="width: 265px">
+              <h3>Relationship to Patient:</h3>
+              <p class="italics">Relación con el paciente</p>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.secondary_insurance_detail.relationship_to_patient}}"
+              name="relationship_to_patient"
+            />
+          </div>
+
+          <div class="fs3DOBContainer">
+            <div class="fs3labels">
+              <h3 class="fs2DOBText">DOB</h3>
+              <div class="fs2DOBTranslatorText">Fecha de nacimiento</div>
+            </div>
+            <input
+              class="fs2dateStyle"
+              name="dob"
+              value="{{secondary_insurance_detail.dob}}"
+            />
+            
+          </div>
+        </div>
+      <div class="divider"></div>
+      </div>
+      <div class="fs4MainContainer">
+        <h2 class="fs4PrivacyHeading">
+          Federal Privacy Standards require the following information
+        </h2>
+        <p class="fs4TranslatorPrivacyHeading">
+          Los Estandares Federales de Privacidad requieren la siguiente
+          información
+        </p>
+
+        <div>
+          <div class="fs4Conatiner">
+            <div class="fs4CheckboxConatiner flex">
+              <div class="fs4SubHeading">
+                <h3 style="font-size: 1rem">Race</h3>
+                <p class="italics">Raza</p>
+              </div>
+              {% comment %} <div
+                class="flex flex-wrap ml-2"
+                style="width: 85%"
+                id="raceSelection"
+              > {% endcomment %}
+                <!-- <div style="display: flex" ></div> -->
+
+<div class="flex flex-wrap ml-2" style="width: 95%">
+  <div class="custom-radioBtn1">
+    <div class="radio-main">
+      <input type="radio" name="race" class="radio-custom"
+      id="White" value="White"
+      {% if federal_privacy_standards.race == "White"%}checked{% endif %}
+      /><label for="White">White</label>
+    </div>
+    <p class="italics checkboxTranslate">Blanco</p>
+  </div>
+  <div class="custom-radioBtn1">
+    <div class="radio-main">
+      <input type="radio" name="race" class="radio-custom"
+      id="Hispanic" value="Hispanic"
+      {% if federal_privacy_standards.race == "Hispanic"%}checked{% endif %} /><label for="Hispanic">Hispanic</label>
+    </div>
+    <p class="italics checkboxTranslate">Hispánico</p>
+  </div>
+  <div class="custom-radioBtn1">
+    <div class="radio-main">
+      <input type="radio" name="race" class="radio-custom"
+      id="Asian" value="Asian"
+      {% if federal_privacy_standards.race == "Asian"%}checked{% endif %}
+      /><label for="Asian">Asian</label>
+    </div>
+    <p class="italics checkboxTranslate">Asiático</p>
+  </div>
+  <div class="custom-radioBtn1">
+    <div class="radio-main">
+      <input type="radio" name="race" class="radio-custom"
+      id="African American" value="African American"
+      {% if federal_privacy_standards.race == "African American"%}checked{% endif %} /><label for="African American"
+        >African American</label
+      >
+    </div>
+    <p class="italics checkboxTranslate">Afro Americano</p>
+  </div>
+  <div class="custom-radioBtn1">
+    <div class="radio-main">
+      <input type="radio" name="race" class="radio-custom"
+      id="American Indian / Alaskan Native" value="American Indian
+      / Alaskan Native"
+      {% if federal_privacy_standards.race == "American Indian / Alaskan Native"%}checked{% endif %} /><label
+        for="American Indian / Alaskan Native"
+        >American Indian / Alaskan Native</label
+      >
+    </div>
+    <p class="italics checkboxTranslate">
+      ndio Americano / Nativo de Alaska
+    </p>
+  </div>
+  <div class="custom-radioBtn1">
+    <div class="radio-main">
+      <input type="radio" name="race" class="radio-custom"
+      id="Native Hawaiian or Other Pacific Islander" value="Native
+      Hawaiian or Other Pacific Islander"
+      {% if federal_privacy_standards.race == "Native Hawaiian or Other Pacific Islander"%}checked{% endif %} /><label
+        for="Native Hawaiian or Other Pacific Islander"
+        >Native Hawaiian or Other Pacific Islander</label
+      >
+    </div>
+    <p class="italics checkboxTranslate">
+      Nativo de Hawai u otra isla del Pacifico
+    </p>
+  </div>
+  <div class="custom-radioBtn1">
+    <div class="radio-main">
+      <input type="radio" name="race" class="radio-custom"
+      id="Other Race" value="Other Race"
+      {% if federal_privacy_standards.race == "Other Race"%}checked{% endif %} /><label for="Other Race">Other Race</label>
+    </div>
+    <p class="italics checkboxTranslate">Otra raza</p>
+  </div>
+  <div>
+    <div class="radio-main">
+      <input type="radio" name="race" class="radio-custom"
+      id="Unreported / Refused to Report" value="Unreported /
+      Refused to Report"
+      {% if federal_privacy_standards.race == "Unreported / Refused to Report"%}checked{% endif %} /><label
+        for="Unreported / Refused to Report"
+        >Unreported / Refused to Report</label>
+    </div>
+    <p class="italics checkboxTranslate">
+      No informado / rechazado a informar
+    </p>
+  </div>
+              </div>
+            </div>
+          </div>
+          <div class="fs4Conatiner">
+            <div class="fs4CheckboxConatiner flex">
+              <div class="fs4SubHeading">
+                <h3 style="font-size: 1rem">Ethnicity</h3>
+                <p class="italics">Etnicidad</p>
+              </div>
+              {% comment %} <div
+                class="flex flex-wrap ml-2"
+                style="width: 85%"
+                id="ethnicitySelection"
+              > {% endcomment %}
+                <!-- <div style="display: flex" ></div> -->
+                <div class="flex flex-wrap ml-2" style="width: 95%">
+                  <div class="custom-radioBtn1">
+                    <div class="radio-main">
+                      <input type="radio" name="ethnicity" class="radio-custom"
+                      id="Hispanic or Latino" value="Hispanic or Latino"
+                      {% if federal_privacy_standards.ethnicity == "Hispanic or Latino"%}checked{% endif %} /><label for="Hispanic or Latino"
+                        >Hispanic or Latino</label
+                      >
+                    </div>
+                    <p class="italics checkboxTranslate">Hispánico o Latino</p>
+                  </div>
+                  <div class="custom-radioBtn1">
+                    <div class="radio-main">
+                      <input type="radio" name="ethnicity" class="radio-custom"
+                      id="Not Hispanic or Latino" value="Not Hispanic or Latino"
+                      {% if federal_privacy_standards.ethnicity == "Not Hispanic or Latino"%}checked{% endif %} /><label for="Not Hispanic or Latino"
+                        >Not Hispanic or Latino</label
+                      >
+                    </div>
+                    <p class="italics checkboxTranslate">No Hispánico o Latino</p>
+                  </div>
+                  <div>
+                    <div class="radio-main">
+                      <input type="radio" name="ethnicity" class="radio-custom"
+                      id="Refused to Report" value="Refused to Report"
+                      {% if federal_privacy_standards.ethnicity == "Refused to Report"%}checked{% endif %} /><label for="Refused to Report"
+                        >Refused to Report</label
+                      >
+                    </div>
+                    <p class="italics checkboxTranslate">Rechazado a informar</p>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="fs4Conatiner">
+            <div class="fs4CheckboxConatiner flex">
+              <div class="fs4SubHeading">
+                <h3 style="font-size: 1rem">Preferred Language:</h3>
+                <p class="italics">Idioma preferido</p>
+              </div>
+
+              {% comment %} <div
+                class="flex flex-wrap ml-2"
+                style="width: 85%"
+                id="languageSelection"
+              > {% endcomment %}
+                <!-- <div style="display: flex" ></div> -->
+                <div class="flex flex-wrap ml-2" style="width: 85%">
+                  <div class="custom-radioBtn1">
+                    <div class="radio-main">
+                      <input type="radio" name="preffered_language"
+                      class="radio-custom" id="Englishpreffered_language"
+                      value="English"
+                      {% if federal_privacy_standards.preffered_language == "English"%}checked{% endif %} /><label for="Englishpreffered_language"
+                        >English</label
+                      >
+                    </div>
+                    <p class="italics checkboxTranslate">Inglés</p>
+                  </div>
+                  <div class="custom-radioBtn1">
+                    <div class="radio-main">
+                      <input type="radio" name="preffered_language"
+                      class="radio-custom" id="Spanishpreffered_language"
+                      value="Spanish"
+                      {% if federal_privacy_standards.preffered_language == "Spanish"%}checked{% endif %} /><label for="Spanishpreffered_language"
+                        >Spanish</label
+                      >
+                    </div>
+                    <p class="italics checkboxTranslate">Español</p>
+                  </div>
+                  <div>
+                    <div class="radio-main">
+                      <input type="radio" name="preffered_language"
+                      class="radio-custom" id="Otherpreffered_language"
+                      value="Other"
+                      {% if federal_privacy_standards.preffered_language == "Other"%}checked{% endif %} /><label for="Otherpreffered_language"
+                      >Other</label
+                      >
+                    </div>
+                    <p class="italics checkboxTranslate">Otro</p>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h1 class="fs4Heading">HIPAA APPROVED CONTACTS:</h1>
+          <p class="fs4HeadingTranslator">CONTACTOS APROBADOS POR HIPAAA</p>
+          <ul>
+            <li class="fsListItem">
+              Please list the individuals you give permission to have access to
+              and discuss your protected health information.
+              <p class="fs4TranslatorPrivacyHeading">
+                Enumere las personas a las que les da permiso para tener acceso
+                y discuta su información de salud protegida.
+              </p>
+            </li>
+            <li class="fsListItem">
+              Write ‘NONE’ if there are no authorized individuals.
+              <p class="fs4TranslatorPrivacyHeading">
+                Escriba ‘NINGUNO’ si no hay personas autorizadas
+              </p>
+            </li>
+          </ul>
+
+          <div class="fs4Container">
+            <div class="fs3CustomStyling" style="width: 30%">
+              <div class="fs3labels fs4labels" style="width: 60px">
+                <h3>Name:</h3>
+                <p class="italics">Nombre</p>
+              </div>
+              <input
+                type="text"
+                name="name"
+                value="{{hippa_approved_contacts.contact1.name}}"
+              />
+            </div>
+            <div class="fs3CustomStyling" style="width: 20%">
+              <div class="fs3labels fs4labels" style="width: 155px">
+                <h3>DOB:</h3>
+                <p class="italics">Fecha de nacimiento</p>
+              </div>
+              <input
+                type="text"
+                name="DOB"
+                value="{{hippa_approved_contacts.contact1.DOB}}"
+              />
+            </div>
+            <div class="fs3CustomStyling" style="width: 20%">
+              <div class="fs3labels fs4labels" style="width: 150px">
+                <h3>Phone:</h3>
+                <p class="italics">Numero de Telefono</p>
+              </div>
+              <input
+                type="text"
+                name="phone"
+                value="{{hippa_approved_contacts.contact1.phone}}"
+              />
+            </div>
+            <div class="fs3CustomStyling" style="width: 25%">
+              <div class="fs3labels fs4labels" style="width: 300px">
+                <h3>Relation to patient:</h3>
+                <p class="italics">Relación</p>
+              </div>
+              <input
+                type="text"
+                name="relationship_to_patient"
+                {% comment %} value="{{hippa_approved_contacts.contact1.relationship_to_patient}}" {% endcomment %}
+                value="{{hippa_approved_contacts.contact1.relationship_to_patient}}"
+              />
+            </div>
+          </div>
+
+          <div class="fs4Container">
+            <div class="fs3CustomStyling" style="width: 30%">
+              <div class="fs3labels fs4labels" style="width: 60px">
+                <h3>Name:</h3>
+                <p class="italics">Nombre</p>
+              </div>
+              <input
+                type="text"
+                name="name"
+                value="{{hippa_approved_contacts.contact2.name}}"
+              />
+            </div>
+            <div class="fs3CustomStyling" style="width: 20%">
+              <div class="fs3labels fs4labels" style="width: 155px">
+                <h3>DOB:</h3>
+                <p class="italics">Fecha de nacimiento</p>
+              </div>
+              <input
+                type="text"
+                name="DOB"
+                value="{{hippa_approved_contacts.contact2.DOB}}"
+              />
+            </div>
+            <div class="fs3CustomStyling" style="width: 20%">
+              <div class="fs3labels fs4labels" style="width: 150px">
+                <h3>Phone:</h3>
+                <p class="italics">Numero de Telefono</p>
+              </div>
+              <input
+                type="text"
+                name="phone"
+                value="{{hippa_approved_contacts.contact2.phone}}"
+              />
+            </div>
+            <div class="fs3CustomStyling" style="width: 25%">
+              <div class="fs3labels fs4labels" style="width: 300px">
+                <h3>Relation to patient:</h3>
+                <p class="italics">Relación</p>
+              </div>
+              <input
+                type="text"
+                name="relationship_to_patient"
+                {% comment %} value="{{hippa_approved_contacts.contact2.relationship_to_patient}}" {% endcomment %}
+                value="{{hippa_approved_contacts.contact2.relationship_to_patient}}"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h1 class="fs4Heading">EMERGENCY CONTACT (REQUIRED):</h1>
+          <p class="fs4HeadingTranslator">
+            CCONTACTO DE EMERGENCIA (REQUERIDO)
+          </p>
+
+          <div class="fs4Container">
+            <div class="fs3CustomStyling" style="width: 30%">
+              <div class="fs3labels fs4labels" style="width: 60px">
+                <h3>Name:</h3>
+                <p class="italics">Nombre</p>
+              </div>
+              <input
+                type="text"
+                name="name"
+                value="{{emergency_contact.contact1.name}}"
+              />
+            </div>
+            <div class="fs3CustomStyling" style="width: 20%">
+              <div class="fs3labels fs4labels" style="width: 155px">
+                <h3>DOB:</h3>
+                <p class="italics">Fecha de nacimiento</p>
+              </div>
+              <input
+                type="text"
+                name="DOB"
+                value="{{emergency_contact.contact1.DOB}}"
+              />
+            </div>
+            <div class="fs3CustomStyling" style="width: 20%">
+              <div class="fs3labels fs4labels" style="width: 150px">
+                <h3>Phone:</h3>
+                <p class="italics">Numero de Telefono</p>
+              </div>
+              <input
+                type="text"
+                name="phone"
+                value="{{emergency_contact.contact1.phone}}"
+              />
+            </div>
+            <div class="fs3CustomStyling" style="width: 25%">
+              <div class="fs3labels fs4labels" style="width: 300px">
+                <h3>Relation to patient:</h3>
+                <p class="italics">Relación</p>
+              </div>
+              <input
+                type="text"
+                name="relationship_to_patient"
+                value="{{emergency_contact.contact1.relationship_to_patient}}"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="fs2Border"></div>
+      </div>
+      <!-- </Form> -->
+    </div>
+    <!-- page2 -->
+    <div class="formPage2Main flex">
+      <div class="formSection1">
+        <div class="sectionHeightWeight flex justify-content-between">
+          <div
+            class="sectionHeightWeightBlanks flex align-items-start w-50 mt-1"
+          >
+            <div class="sectionHeightWeightInner">
+              <h3>What is your Weight?</h3>
+              <p class="italics">¿Cuál es su altura?</p>
+            </div>
+            <input
+              type="text"
+              name="weight"
+              value="{{weight}}"
+              class="heightWeightInput"
+            />
+          </div>
+          <div
+            class="sectionHeightWeightBlanks flex align-items-start w-50 mt-1"
+          >
+            <div class="sectionHeightWeightInner">
+              <h3>What is your Height?</h3>
+              <p class="italics">¿Cuál es su altura?</p>
+            </div>
+            <input
+              type="text"
+              name="height"
+              value="{{height}}"
+              class="heightWeightInput"
+            />
+          </div>
+        </div>
+        <div class="divider"></div>
+
+        <div class="medicationsSection">
+          <div>
+            <div class="flex">
+              <div>
+                <h3 class="heading">Medications</h3>
+                <p class="italics">MEDICAMENTOS</p>
+              </div>
+              <div class="medicationsSectionCheckbox">
+                <input
+                  type="checkbox"
+                  name="none"
+                  id="none_medics"
+                  checked="{medications.none}"
+                  value="{{medications.none}}"
+                />
+                <label htmlFor="none_medics">None</label>
+                <p class="italics">Ninguno</p>
+              </div>
+            </div>
+            <div class="medicationsSectionInfo">
+              <ul>
+                <li>
+                  Please list all the medications you are taking, including
+                  supplements (attach list as needed).
+                </li>
+              </ul>
+              <p class="italics">
+                Escriba todos los medicamentos que está tomando, incluidos los
+                suplementos. (adjunte a lista según sea necesario)
+              </p>
+            </div>
+          </div>
+          <div class="medicationsSectionDetail">
+            <input
+              type="text"
+              name="medication1"
+              value="{{medications.list.medication1}}"
+            />
+            <input
+              type="text"
+              name="medication2"
+              value="{{medications.list.medication2}}"
+            />
+            <input
+              type="text"
+              name="medication3"
+              value="{{medications.list.medication3}}"
+            />
+          </div>
+          <div class="divider"></div>
+        </div>
+
+        <div class="allergiesSection">
+          <div>
+            <div class="flex">
+              <div>
+                <h3 class="heading">Allergies</h3>
+                <p class="italics">ALERGIAS</p>
+              </div>
+
+              <div class="medicationsSectionCheckbox">
+                <input
+                  type="checkbox"
+                  name="none"
+                  id="none_allergies"
+                  checked="{allergies.none}"
+                  value="{{allergies.none}}"
+                />
+                <label htmlFor="none_allergies">None</label>
+                <p class="italics">Ninguno</p>
+              </div>
+            </div>
+            <div>
+              <div class="allergiesQuiz1 flex align-items-center">
+                <div>
+                  <p>Are you allergic to:</p>
+                  <p class="italics">¿Eres alérgico a</p>
+                </div>
+                <div class="flex justify-content-between allergiesQuiz1Choices">
+                  <div class="custom-radioBtn">
+                    <div class="radio-main">
+                      <input
+                        type="radio"
+                        name="allergic_to"
+                        class="radio-custom"
+                        id="latex"
+                        value="latex"
+                        {% if allergies.allergic_to == "latex" %}checked{% endif %}
+                      />
+                      <label htmlFor="latex">Latex</label>
+                    </div>
+                    <p class="italics checkboxTranslate">Látex</p>
+                  </div>
+                  <div class="custom-radioBtn">
+                    <div class="radio-main">
+                      <input
+                        type="radio"
+                        name="allergic_to"
+                        class="radio-custom"
+                        id="contrast_dye"
+                        value="contrast_dye"
+                        {% if allergies.allergic_to == "contrast_dye" %}checked{% endif %}/>
+                      <label htmlFor="contrast_dye">Contrast Dye</label>
+                    </div>
+                    <p class="italics checkboxTranslate">Tinte de contraste</p>
+                  </div>
+                  <div>
+                    <div class="radio-main">
+                      <input
+                        type="radio"
+                        name="allergic_to"
+                        class="radio-custom"
+                        id="iodine"
+                        value="iodine"
+                        {% if allergies.allergic_to == "iodine" %}checked{% endif %}/>
+                      <label htmlFor="iodine">Iodine</label>
+                    </div>
+                    <p class="italics checkboxTranslate">Yodo</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="allergiesSectionInfo">
+              <ul>
+                <li>
+                  Please list any medications you are allergic to and how each
+                  affects you.
+                </li>
+              </ul>
+              <p class="italics">
+                Escriba todos los medicamentos que está tomando, incluidos los
+                suplementos. (adjunte a lista según sea necesario)
+              </p>
+            </div>
+          </div>
+          <div class="allergiesSectionDetail">
+            <input
+              type="text"
+              name="medication1"
+              value="{{allergies.medications_allergic_to}}"
+            />
+            <input
+              type="text"
+              name="medication2"
+              value="{{allergies.medications_allergic_to}}"
+            />
+            <input
+              type="text"
+              name="medication3"
+              value="{{allergies.medications_allergic_to}}"
+            />
+          </div>
+          <div class="divider"></div>
+        </div>
+
+        <div class="surgerySection">
+          <div>
+            <div class="flex">
+              <div>
+                <h3 class="heading">Surgery History</h3>
+                <p class="italics">HISTORIA DE CIRUGÍA</p>
+              </div>
+
+              <div class="surgerySectionCheckbox">
+                <input
+                  type="checkbox"
+                  name="none"
+                  id="none_surgey"
+                  checked="{surgery_history.none}"
+                  value="{{surgery_history.none}}"
+                />
+                <label htmlFor="none_surgey">None</label>
+                <p class="italics">Ninguno</p>
+              </div>
+            </div>
+            <div>
+              <div class="surgerySectionQuiz1 flex align-items-center">
+                <div>
+                  <p>Have you ever had problems with anesthesia?</p>
+                  <p class="italics">
+                    ¿Alguna vez ha tenido problemas con la anestesia?
+                  </p>
+                </div>
+                <div class="flex socialHistorySectionCheckbox">
+                  <div style="width:35%">
+                    <div class="radio-main">
+                      <input
+                        type="radio"
+                        name="have_anesthesia"
+                        class="radio-custom"
+                        id="yes"
+                        value="yes"
+                        {% if surgery_history.have_anesthesia == "yes" %}checked{% endif %}/>
+                      <label htmlFor="yes">Yes</label>
+                    </div>
+                    <p class="italics checkboxTranslate">Si</p>
+                  </div>
+                  <div>
+                    <div class="radio-main">
+                      <input
+                        type="radio"
+                        name="have_anesthesia"
+                        class="radio-custom"
+                        id="no"
+                        value="no"
+                        {% if surgery_history.have_anesthesia == "no" %}checked{% endif %}/>
+                      <label htmlFor="no">No</label>
+                    </div>
+                    <p class="italics checkboxTranslate">No</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="surgerySectionInfo">
+              <div class="flex align-items-center">
+                <div style="width: 150px">
+                  <p>Please explain:</p>
+                  <p class="italics">Por favor explique</p>
+                </div>
+                <input
+                  type="text"
+                  name="explain"
+                  class="radio-custom"
+                  value="{{surgery_history.explain}}"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="surgerySectionDetail mt-1">
+            <div class="surgerySectionHead flex">
+              <div>
+                <h3>PROCEDURE</h3>
+              </div>
+              <div>
+                <h3>DATE (MO/YR)</h3>
+              </div>
+            </div>
+            <div>
+              {% if surgery_history.procedure %}
+                {% for item in surgery_history.procedure %}
+                <div class="flex">
+                  <div class="page4TableItem1">
+                    <p>{{ item.procedure }}</p>
+                  </div>
+                  <div class="page4TableItem2 flex flex-wrap">
+                    <div class="page4TableItem1">
+                      <p class="italics">{{ item.time }}</p>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              {% endif %}
+            </div> 
+          </div>
+          <div class="divider"></div>
+        </div>
+      </div>
+
+      <div class="formSection2">
+        <div class="familyHistorySection">
+          <div>
+            <div class="flex">
+              <div>
+                <h3 class="heading">FAMILY HISTORY</h3>
+                <p class="italics">HISTORIA FAMILIAR</p>
+              </div>
+
+              <div class="familyHistorySectionCheckbox">
+                <input
+                  type="checkbox"
+                  name="none"
+                  id="none_family_history"
+                  checked="{data.family_history.none}"
+                  value="{{family_history.none}}"
+                />
+                <label htmlFor="none_family_history">None</label>
+                <p class="italics">Ninguno</p>
+              </div>
+            </div>
+            <div>
+              <p class="familyHistorySectionText">
+                Please list any family history of your
+                <b>Father, Mother, Siblings, Children</b> and
+                <b>Grandparents</b>
+              </p>
+              <p class="italics">
+                Escriba todos los medicamentos que está tomando, incluidos los
+                suplementos. (adjunte a lista según sea necesario)
+              </p>
+            </div>
+          </div>
+          <div class="historySectionDetail">
+            <div class="historySectionHead flex">
+              <div>
+                <h3>CONDITION</h3>
+                <p class="italics">CONDICIÓN</p>
+              </div>
+              <div>
+                <h3>RELATIONSHIP</h3>
+                <p class="italics">RELACIÓN</p>
+              </div>
+            </div>
+            <div>
+              {% for item in family_history.conditions_relationships %}
+              <div class="flex">
+                <div class="page4TableItem1">
+                  <p>{{ item.condition }}</p>
+                  <p class="italics">{{ item.translation }}</p>
+                </div>
+                <div class="page4TableItem2 flex flex-wrap">
+                  <div class="page4TableItem1">
+                    <p class="italics">{{ item.relationship }}</p>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="divider"></div>
+        </div>
+        <div class="socialHistorySection">
+          <div>
+            <div class="flex">
+              <div>
+                <h3 class="heading">SOCIAL HISTORY:</h3>
+                <p class="italics">HISTORIA SOCIAL</p>
+              </div>
+              <div class="socialHistorySectionCheckbox">
+                <input
+                  type="checkbox"
+                  name="none"
+                  id="none_social_history"
+                  checked="{social_history.none}"
+                  value="{{social_history.none}}"
+                />
+                <label htmlFor="none_social_history">None</label>
+                <p class="italics">Ninguno</p>
+              </div>
+            </div>
+            <div>
+              <div class="socialHistoryQuiz flex align-items-center">
+                <div>
+                  <p>Are you a:</p>
+                  <p class="italics">Eres un</p>
+                </div>
+                <div class="flex felx-wrap" style="width:70%">
+                  <div style="custom-radioBtn">
+                    <div class="radio-main">
+                      <input type="radio" name="smoker_type"
+                      class="radio-custom" id="non_smoker" value="non_smoker"
+                      {% if social_history.smoker_type == "non_smoker" %}checked{% endif %} />
+                      <label htmlFor="non_smoker">Non Smoker</label>
+                    </div>
+                    <p class="italics checkboxTranslate">No Fuma</p>
+                  </div>
+                  <div style="custom-radioBtn">
+                    <div class="radio-main">
+                      <input type="radio" name="smoker_type"
+                      class="radio-custom" id="former_smoker"
+                      value="former_smoker"
+                      {% if social_history.smoker_type == "former_smoker" %}checked{% endif %} />
+                      <label htmlFor="former_smoker">Former Smoker</label>
+                    </div>
+                    <p class="italics checkboxTranslate">Ex-fumador</p>
+                  </div>
+                  <div>
+                    <div class="radio-main">
+                      <input type="radio" name="smoker_type"
+                      class="radio-custom" id="current_smoker"
+                      value="current_smoker"
+                      {% if social_history.smoker_type == "current_smoker" %}checked{% endif %} />
+                      <label htmlFor="current_smoker">Current Smoker</label>
+                    </div>
+                    <p class="italics checkboxTranslate">Actual fumador</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="former_smoker">
+              <p>If <b>"Former Smoker"</b></p>
+              <p class="italics">Si ‘Ex fumador’</p>
+              <div class="flex align-items-center socialHistorySmoker">
+                <div style="width: 265px">
+                  <p>How long did you smoke?</p>
+                  <p class="italics">¿Cuánto tiempo fumaste?</p>
+                </div>
+                <input
+                  name="how_long_did_you_somke"
+                  value="{{social_history.former_smoker.how_long_did_you_somke}}"
+                  type="text"
+                />
+              </div>
+              <div class="flex align-items-center socialHistorySmoker">
+                <div style="width: 210px">
+                  <p>When did you quit?</p>
+                  <p class="italics">¿Cuánto tiempo fumaste?</p>
+                </div>
+                <input
+                  name="when_did_you_quit"
+                  value="{{social_history.former_smoker.how_when_did_you_quit}}"
+                  type="text"
+                />
+              </div>
+            </div>
+            <div class="current_smoker" style="margin-top: 1em">
+              <p>If <b>"Current Smoker"</b></p>
+              <p class="italics">Si ‘Fumador actual’</p>
+              <div class="flex align-items-center socialHistorySmoker">
+                <div style="width: 535px">
+                  <p>How many packs per day do you smoke?</p>
+                  <p class="italics">¿Cuántos paquetes al día fumas?</p>
+                </div>
+                <input
+                  name="how_many_packs_per_day_do_you_smoke"
+                  value="{{social_history.current_smoker.how_many_packs_per_day_do_you_smoke}}"
+                />
+              </div>
+              <div class="flex align-items-center socialHistorySmoker">
+                <div style="width: 310px; margin-top: 1em">
+                  <p>How long have you smoked?</p>
+                  <p class="italics">¿Cuántos tiempo has fumado?</p>
+                </div>
+                <input
+                  name="how_long_have_you_smoked"
+                  value="{{social_history.current_smoker.how_long_have_you_smoked}}"
+                />
+              </div>
+            </div>
+            <div
+              class="socialHistoryQuiz2 flex align-items-center"
+              style="margin-top: 1em"
+            >
+              <div class="mr-1">
+                <p>Are you interested in quitting?</p>
+                <p class="italics">¿Estás interesado en dejar de fumar?</p>
+              </div>
+              <div class="flex socialHistorySectionCheckbox">
+                <div class="custom-radioBtn">
+                  <div class="radio-main">
+                    <input type="radio" name="interested_in_quitting"
+                    class="radio-custom" id="interseted_quiting_yes" value="yes"
+                    {% if social_history.current_smoker.interested_in_quitting == "yes" %}checked{% endif %} />
+                    <label htmlFor="interseted_quiting_yes">Yes</label>
+                  </div>
+                  <p class="italics checkboxTranslate">Si</p>
+                </div>
+                <div>
+                  <div class="radio-main">
+                    <input type="radio" name="interested_in_quitting"
+                    class="radio-custom" id="interseted_quiting_no" value="no"
+                    {% if social_history.current_smoker.interested_in_quitting == "no" %}checked{% endif %} />
+                    <label htmlFor="interseted_quiting_no">No</label>
+                  </div>
+                  <p class="italics checkboxTranslate">No</p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="socialHistoryQuiz2 flex align-items-center"
+              style="margin-top: 1em"
+            >
+              <div class="mr-1">
+                <p>Do you drink?</p>
+                <p class="italics">¿Bebes alcohol?</p>
+              </div>
+              <div class="flex socialHistorySectionCheckbox">
+                <div class="custom-radioBtn">
+                  <div class="radio-main">
+                    <input type="radio" name="do_you_drink" class="radio-custom"
+                    id="drink_yes" value="yes"
+                    {% if social_history.current_smoker.how_often_do_you_drink == "yes" %}checked{% endif %} />
+                    <label htmlFor="drink_yes">Yes</label>
+                  </div>
+                  <p class="italics checkboxTranslate">Si</p>
+                </div>
+                <div>
+                  <div class="radio-main">
+                    <input type="radio" name="do_you_drink" class="radio-custom"
+                    id="drink_no" value="no"
+                    {% if social_history.current_smoker.how_often_do_you_drink == "no" %}checked{% endif %} />
+                    <label htmlFor="drink_no">No</label>
+                  </div>
+                  <p class="italics checkboxTranslate">No</p>
+                </div>
+              </div>
+            </div>
+            <div
+              class="socialHistoryQuiz2 flex align-items-center"
+              style="margin-top: 1em"
+            >
+              <div class="mr-1">
+                <p>If <b>‘Yes’</b>: How often do you drink?</p>
+                <p class="italics">
+                  En caso afirmativo, ¿con qué frecuencia bebes?
+                </p>
+              </div>
+              <div class="flex socialHistorySectionCheckbox">
+                <div class="custom-radioBtn">
+                  <div class="radio-main">
+                    <input type="radio" name="how_often_do_you_drink"
+                    class="radio-custom" id="Daily" value="Daily"
+                    {% if social_history.current_smoker.how_often_do_you_drink == "Daily" %}checked{% endif %} />
+                    <label htmlFor="Daily">Daily</label>
+                  </div>
+                  <p class="italics checkboxTranslate">Diario</p>
+                </div>
+                <div class="custom-radioBtn">
+                  <div class="radio-main">
+                    <input type="radio" name="how_often_do_you_drink"
+                    class="radio-custom" id="Few" value="Few"
+                    {% if social_history.current_smoker.how_often_do_you_drink == "Few" %}checked{% endif %} />
+                    <label htmlFor="Few">Few per week/mo</label>
+                  </div>
+                  <p class="italics checkboxTranslate">Pocos por semana/mesr</p>
+                </div>
+                <div>
+                  <div class="radio-main">
+                    <input type="radio" name="how_often_do_you_drink"
+                    class="radio-custom" id="Rarely" value="Rarely"
+                    {% if social_history.current_smoker.how_often_do_you_drink == "Rarely" %}checked{% endif %} />
+                    <label htmlFor="Rarely">Rarely</label>
+                  </div>
+                  <p class="italics checkboxTranslate">Rara vez</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="divider"></div>
+        </div>
+
+        <div class="drugUseSection">
+          <div>
+            <div class="">
+              <div>
+                <h3 class="heading">RECREATIONAL DRUG USE:</h3>
+                <p class="italics">USO RECREATIVO DE DROGAS</p>
+              </div>
+            </div>
+            <div>
+              <div class="">
+                <div class="flex felx-wrap">
+                  <div>
+                    <div class="radio-main">
+                      <input type="radio" name="used" class="radio-custom"
+                      id="recreational_never" value="Never"
+                      {% if recreational_drug_use.last_used == "Never" %}checked{% endif %}/>
+                      <label htmlFor="recreational_never">Never</label>
+                    </div>
+                    <p class="italics checkboxTranslate">Nunca</p>
+                  </div>
+                  <div>
+                    <div class="radio-main">
+                      <input type="radio" name="used" class="radio-custom"
+                      id="recreational_previous" value="Previous"
+                      {% if recreational_drug_use.last_used == "Previous" %}checked{% endif %}/>
+                      <label htmlFor="recreational_previous">Previous</label>
+                    </div>
+                    <p class="italics checkboxTranslate">Anterior</p>
+                  </div>
+                  <div>
+                    <div class="radio-main">
+                      <input type="radio" name="used" class="radio-custom"
+                      id="recreational_current" value="Current"
+                      {% if recreational_drug_use.last_used == "Current" %}checked{% endif %} />
+                      <label htmlFor="recreational_current">Current</label>
+                    </div>
+                    <p class="italics checkboxTranslate">Presente</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="flex align-items-center socialHistorySmoker">
+                <div style="width: 60px">
+                  <p>Drugs</p>
+                  <p class="italics">Droga</p>
+                </div>
+                <input
+                  name="drug"
+                  value="{{recreational_drug_use.drug}}"
+                />
+              </div>
+              <div class="flex align-items-center socialHistorySmoker">
+                <div style="width: 145px; margin-top: 1em">
+                  <p>Last Used:</p>
+                  <p class="italics">Utilizado por última vez</p>
+                </div>
+                <input
+                  name="last_used"
+                  value="{{recreational_drug_use.last_used}}"
+                />
+              </div>
+              <div class="border drugUseSectionFemaleOnly">
+                <h3>Female Patients Only</h3>
+                <p class="italics">Solo pacientes femeninos</p>
+                <div class="femaleOnlyQuiz flex align-items-center">
+                  <div>
+                    <p>
+                      Are you now or is there a chance that you are pregnant?
+                    </p>
+                    <p class="italics">
+                      ¿Está usted ahora o existe la posibilidad de que esté
+                      embarazada?
+                    </p>
+                  </div>
+
+                  <div class="flex drugUseSectionCheckbox">
+                    <div>
+                      <div class="radio-main">
+                        <input type="radio" name="female_only"
+                        class="radio-custom" id="female_yes" value="yes"
+                        {% if recreational_drug_use.female_only == "yes" %}checked{% endif %} />
+                        <label htmlFor="female_yes">Yes</label>
+                      </div>
+                      <p class="italics checkboxTranslate">Si</p>
+                    </div>
+                    <div>
+                      <div class="radio-main">
+                        <input type="radio" name="female_only"
+                        class="radio-custom" id="female_no" value="no"
+                        {% if recreational_drug_use.female_only == "no" %}checked{% endif %}/>
+                        <label htmlFor="female_no">No</label>
+                      </div>
+                      <p class="italics checkboxTranslate">No</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="divider"></div>
+        </div>
+      </div>
+    </div>
+    <!-- page3 -->
+    <div class="formPage3Main">
+      <div class="fs5Main flex">
+        <div class="fs5Section1">
+          <div>
+            <div class="medicHistoryText">
+              <h3 class="fs5Heading">MEDICAL HISTORY:</h3>
+              <p class="fs5BoldText">ALL PATIENTS</p>
+            </div>
+            <p class="fs5TranslationText">
+              HISTORIAL MÉDICO: TODOS LOS PACIENTES
+            </p>
+            <p class="fs5SubHeading">
+              Have you ever been <span class="fs5BoldText">DIAGNOSED</span>
+              with any of the following conditions?
+            </p>
+            <p class="fs5TranslationText">
+              ¿Alguna vez ha sido DIAGNOSTICO con alguna de las siguientes
+              condiciones?
+            </p>
+          </div>
+          <div>
+            {% for item in medical_history %}
+              <div style="display: flex">
+                <h3 style="width:460px">
+                  {{item.condition}}
+                  <span >{{item.translation}}</span>
+                </h3>
+                <div>
+                  <div class="flex flex-wrap ml-2" style="width:%">
+                    <div>
+                      <div class="radio-main">
+                        <input type="radio" name="medhistory{{item.id}}"
+                        class="radio-custom" id="fs5yes{{item.id}}" value="Yes" {% if item.selected == "Yes" %}checked{% endif %}>
+                        <label for="fs5yes1{{item.id}}">Yes <span class="italics">Si</span></label>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="radio-main">
+                        <input type="radio" name="medhistory{{item.id}}"
+                        class="radio-custom" id="fs5no{{item.id}}" value="No" {% if item.selected == "No" %}checked{% endif %}>
+                        <label for="fs5no1{{item.id}}">No <span class="italics">No</span></label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="fs5Border"></div>
+          <div style="margin-top: 2%">
+            <h3 class="fs5Heading">REVIEW OF SYMPTOMS:</h3>
+            <p class="fs5TranslationText">¿REVISIÓN DE SÍNTOMAS?</p>
+            <p class="fs5SubHeading">
+              Do you <span class="fs5BoldText">NOW</span> have any of the
+              following symptoms?
+            </p>
+            <p class="fs5TranslationText">
+              ¿AHORA tiene alguno de los siguientes síntomas?
+            </p>
+          </div>
+          <div>
+            {% for item in review_of_symptoms1 %}
+              <div style="display: flex">
+                <h3 style="width:460px">
+                  {{item.condition}}
+                  <span >{{item.translation}}</span>
+                </h3>
+                <div>
+                  <div class="flex flex-wrap ml-2" style="width:%">
+                    <div>
+                      <div class="radio-main">
+                        <input type="radio" name="medhistory{{item.id}}"
+                        class="radio-custom" id="fs5yes{{item.id}}" value="Yes" {% if item.selected == "Yes" %}checked{% endif %}>
+                        <label for="fs5yes1{{item.id}}">Yes <span class="italics">Si</span></label>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="radio-main">
+                        <input type="radio" name="medhistory{{item.id}}"
+                        class="radio-custom" id="fs5no{{item.id}}" value="No" {% if item.selected == "No" %}checked{% endif %}>
+                        <label for="fs5no1{{item.id}}">No <span class="italics">No</span></label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="fs5Section2">
+          <div>
+            {% for item in review_of_symptoms2 %}
+              <div style="display: flex">
+                <h3 style="width:460px">
+                  {{item.condition}}
+                  <span >{{item.translation}}</span>
+                </h3>
+                <div>
+                  <div class="flex flex-wrap ml-2" style="width:%">
+                    <div>
+                      <div class="radio-main">
+                        <input type="radio" name="medhistory{{item.id}}"
+                        class="radio-custom" id="fs5yes{{item.id}}" value="Yes" {% if item.selected == "Yes" %}checked{% endif %}>
+                        <label for="fs5yes1{{item.id}}">Yes <span class="italics">Si</span></label>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="radio-main">
+                        <input type="radio" name="medhistory{{item.id}}"
+                        class="radio-custom" id="fs5no{{item.id}}" value="No" {% if item.selected == "No" %}checked{% endif %}>
+                        <label for="fs5no1{{item.id}}">No <span class="italics">No</span></label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="fs5Border"></div>
+
+          {% comment %} <div> {% endcomment %}
+            <div class="fs7TextContainer">
+              <h3 style="width:300px" class="fs7MainHeading">EUSTACHIAN TUBE DYSFUNCTION</h3>
+              <p  style="width:300px" class="fs4HeadingTranslator">
+                DISFUNCION DEL TUBO EUSTACHIANO
+              </p>
+              <p  style="width:500px" class="fs7Heading">
+                During the last month, how much of a problem was each of the
+                following:
+              </p>
+              <p style="width:500px"  class="fs4HeadingTranslator">
+                Durante el ultimo mes, que tan problematico fue cada uno de los
+              </p>
+              <p style="width:500px"  class="fs7RangeText">
+                0 = no problem <span class="fs7spanBorder">|</span> 2 = moderate
+                problem <span class="fs7spanBorder">|</span> 5 = very severe
+              </p>
+              <p style="width:600px"  class="fs7TranslationText">
+                0 = no hay problema <span class="fs7spanBorder"></span> 2 =
+                problema moderato <span class="fs7spanBorder"></span> 5 = muy
+                severo
+              </p>
+            </div>
+          {% comment %} </div> {% endcomment %}
+          <div class="fs7ScoreTable">
+            <div id="EUSTACHIANTUBEDYSFUNCTION">
+              {% for item in eustachian_tube_dysfunction.list %}
+                <div class="flex">
+                  <div class="page4TableItem1">
+                    <p>{{ item.condition }}</p>
+                    <p class="italics">{{ item.translation }}</p>
+                  </div>
+                  <div class="page4TableItem2 flex flex-wrap">
+                    {% for value in '01234' %}
+                    <div key="{{ value }}">
+                      <div class="radio-main">
+                        <input type="radio" name="fs7_hear_history_detail{{ item.id }}"
+                          class="radio-custom"
+                          id="fs7_hear_history_detail_{{ item.id }}_{{ value }}"
+                          value="{{ value }}"
+                          {% if value == item.range %}checked{% endif %}>
+                        <label for="fs7_hear_history_detail_{{ item.id }}_{{ value }}">
+                          {{ value }}
+                        </label>
+                      </div>
+                    </div>
+                  {% endfor %}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+
+          {% comment %} <div class="fs7ScoreCalculation">
+            <div>
+              <h3 class="fs7TotalHeading">Total Score</h3>
+              <p class="italics">Puntuación total</p>
+            </div>
+            <div class="fs7InputFieldContainer">
+              <input
+                type="text"
+                name="totalScore"
+                class="radio-custom"
+                id="totalScore"
+                value="{{eustachian_tube_dysfunction.totalScore}}"
+              />
+            </div>
+            <div>
+              <h3 class="fs7TotalHeading">+ 7 = Mean Item Score</h3>
+              <p class="italics">+ 7 = Puntuación de elementos medios</p>
+            </div>
+            <div class="fs7InputFieldContainer">
+              <input
+                type="text"
+                name="itemScore"
+                class="radio-custom"
+                id="itemScore"
+                value="{{eustachian_tube_dysfunction.itemScore}}"
+              />
+            </div>
+          </div> {% endcomment %}
+
+          <div class="fs7ScoreCalculation">
+            <div class="fs7ScoreCalculationFDiv">
+              <div>
+                <h3 class="fs7TotalHeading">Total Score</h3>
+                <p class="italics">Puntuación total</p>
+              </div>
+              <div class="fs7InputFieldContainer">
+                <input
+                  type="text"
+                  name="totalScore"
+                  class="radio-custom"
+                  id="totalScore"
+                  value="{{eustachian_tube_dysfunction.totalScore}}"
+                />
+              </div>
+            </div>
+
+            <div class="fs7ScoreCalculationSDiv">
+              <div>
+                <h3 class="fs7TotalHeading">+ 7 = Mean Item Score</h3>
+                <p class="italics">+ 7 = Puntuación de elementos medios</p>
+              </div>
+              <div class="fs7InputFieldContainer">
+                <input
+                  type="text"
+                  name="itemScore"
+                  class="radio-custom"
+                  id="itemScore"
+                  value="{{eustachian_tube_dysfunction.itemScore}}"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="fs7SymptomsContainer">
+            <div class="fs7SymptomsText">
+              <h3>Are these symptoms in :</h3>
+              <p class="italics">¿Son estos sintomas en el oido</p>
+            </div>
+
+            <div class="fs7SymptomsContainerCheckboxes flex ml-1">
+              <div>
+                <div class="radio-main">
+                  <input type="radio" name="disfunctions_in"
+                  class="radio-custom" id="fs7symptoms_1" value="Left ear only"
+                  {% if value == eustachian_tube_dysfunction.disfunctions_in %}checked{% endif %}/>
+                  <label htmlFor="fs7symptoms_1">Left ear only</label>
+                </div>
+              </div>
+              <div>
+                <div class="radio-main">
+                  <input type="radio" name="disfunctions_in"
+                  class="radio-custom" id="fs7symptoms_2" value="Right ear only"
+                  {% if value == eustachian_tube_dysfunction.disfunctions_in %}checked{% endif %}/>
+                  <label htmlFor="fs7symptoms_2">Right ear only</label>
+                </div>
+              </div>
+              <div>
+                <div class="radio-main">
+                  <input type="radio" name="disfunctions_in"
+                  class="radio-custom" id="fs7symptoms_3" value="Both ears"
+                  {% if value == eustachian_tube_dysfunction.disfunctions_in %}checked{% endif %}/>
+                  <label htmlFor="fs7symptoms_3">Both ears</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- page4 -->
+    <div class="FormPage4Main flex">
+      <div class="FormPage4Section1">
+        <div class="sleepnessScaleSection">
+          <div class="formPage4Head">
+            <h2>THE EPWORTH SLEEPINESS SCALE</h2>
+            <p class="italics">LA ESCALA DE SUEÑO DE EPWORTH</p>
+          </div>
+          <div class="sleepnessScaleDetail">
+            <ul>
+              <li>
+                <div>
+                  <p class="">
+                    How likely are you to doze off or fall asleep in the
+                    following scenarios in contrast to just feeling tired?
+                  </p>
+                  <p class="italics">
+                    ¿Qué posibilidades hay de que se duerma en los siguientes
+                    escenarios en contraste con solo sentirte cansado?
+                  </p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p class="">
+                    Even if have not done some of these thing recently, try to
+                    work out how they would have affected you.
+                  </p>
+                  <p class="italics">
+                    ¿Qué posibilidades hay de que se duerma en los siguientes
+                    escenarios en contraste con solo sentirte cansado?
+                  </p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p class="">
+                    Use the scale to choose the most appropriate number for each
+                    situation and circle the correct one.
+                  </p>
+                  <p class="italics">
+                    Use la escala para elegir el número más apropiado para cada
+                    situación y circule el correcto
+                  </p>
+                </div>
+              </li>
+            </ul>
+            <div class="sleepnessScaleSectionMeasures">
+              <p>
+                <b>0 = Would Never Doze</b>
+                <span class="italics">Nunca duerme</span>
+              </p>
+              <p>
+                <b>1 = Slight Chance of Dozing</b>
+                <span class="italics">
+                  Poca probabilidad de quedarse dormido
+                </span>
+              </p>
+              <p>
+                <b>2 = Moderate Chance of Dozing</b>
+                <span class="italics"> Posibilidad moderada de dormirse </span>
+              </p>
+              <p>
+                <b>3 = High Chance of Dozing</b>
+                <span class="italics">Alta probabilidad de dormirse</span>
+              </p>
+            </div>
+            <div class="page4Table">
+              <div class="page4TableHead flex">
+                <div class="page4TableHeadPart1">
+                  <h3>SCENARIO</h3>
+                  <p class="italics">ESCENARIO</p>
+                </div>
+                <div class="page4TableHeadPart2">
+                  <h3>CHANCE OF DOZING</h3>
+                  <p class="italics">PROBABILIDAD DE DORMIRSE</p>
+                </div>
+              </div>
+              <div id="EPWORTHSLEEPINESSSCALE">
+                {% for item in the_epworth_sleepiness_scale %}
+                <div class="flex">
+                  <div class="page4TableItem1">
+                    <p>{{ item.condition }}</p>
+                    <p class="italics">{{ item.conditionTranslate }}</p>
+                  </div>
+                  <div class="page4TableItem2 flex flex-wrap">
+                    {% for value in '01234' %}
+                    <div key="{{ value }}">
+                      <div class="radio-main">
+                        <input type="radio" name="fs7_hear_history_detail{{ item.id }}"
+                          class="radio-custom"
+                          id="fs7_hear_history_detail_{{ item.id }}_{{ value }}"
+                          value="{{ value }}"
+                          {% if value == item.chanceOfDozing %}checked{% endif %}>
+                        <label for="fs7_hear_history_detail_{{ item.id }}_{{ value }}">
+                          {{ value }}
+                        </label>
+                      </div>
+                    </div>
+                  {% endfor %}
+                  </div>
+                </div>
+              {% endfor %}
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="HearingHistorySection">
+          <div class="formPage4Head">
+            <h2>HEARING HISTORY QUESTIONNAIRE</h2>
+            <p class="italics">CUESTIONARIO DE HISTORIA AUDITIVA</p>
+            <p>Please circle the appropriate response for each symptom.</p>
+            <p class="italics">
+              Por favor circule la respuesta apropiada para cada síntoma
+            </p>
+          </div>
+          <div class="HearingHistoryDetail">
+            <div class="page4Table">
+              <div id="HEARINGHISTORYQUESTIONNAIRE">
+                {% for item in hearing_history_questionnaire %}
+                <div class="flex">
+                  <div class="page4TableItem1">
+                    <p>{{ item.condition }}</p>
+                    <p class="italics">{{ item.conditionTranslate }}</p>
+                  </div>
+                  <div class="page4TableItem2 flex flex-wrap">
+                    <div class="radio-main">
+                      <input type="radio" name="medhistory{{item.id}}"
+                      class="radio-custom" id="fs5no{{item.id}}" value="Yes" {% if item.chanceOfDozing == "Yes" %}checked{% endif %}>
+                      <label for="fs5no1{{item.id}}">Yes <span class="italics">Yes</span></label>
+                    </div>
+                    <div class="radio-main">
+                      <input type="radio" name="medhistory{{item.id}}"
+                      class="radio-custom" id="fs5no{{item.id}}" value="No" {% if item.chanceOfDozing == "No" %}checked{% endif %}>
+                      <label for="fs5no1{{item.id}}">No <span class="italics">No</span></label>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="FormPage4Section2">
+        <div class="formPage4Head">
+          <h2>ALLERGY HISTORY QUESTIONNAIRE</h2>
+          <p class="italics">CUESTIONARIO DE HISTORIA DE ALERGIAS</p>
+        </div>
+        <div>
+          <div id="appElementALLERGYHISTORYQUESTIONNAIRE">
+            {% for item in allergy_history_questionnaire.questions %}
+            <div class="flex">
+              <div class="page4TableItem1">
+                <p>{{ item.question }}</p>
+                <p class="italics">{{ item.translation }}</p>
+              </div>
+              <div class="page4TableItem2 flex flex-wrap">
+                <div class="page4TableItem1">
+                  <p class="italics">{{ item.response }}</p>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+
+          </div>
+          <div>
+            <div>
+              <p>
+                What prescription medication have you tried for allergies? For
+                how long?
+              </p>
+              <p class="italics">
+                ¿Qué medicamentos recetados has probado para las alergias?
+              </p>
+            </div>
+            <div class="page4Table">
+              <div class="page4TableHead flex">
+                <div class="page4TableHeadPart1">
+                  <h3>PRESCRIPTION</h3>
+                  <p class="italics">MEDICAMENTO</p>
+                </div>
+                <div class="page4TableHeadPart2">
+                  <h3>FOR HOW LONG</h3>
+                  <p class="italics">POR CUANTO TIEMPO</p>
+                </div>
+              </div>
+
+              <div id="ALLERGYHISTORYQUIZPrescription">
+                {% for item in allergy_history_questionnaire.perscriptions %}
+                <div class="flex">
+                  <div class="page4TableItem1">
+                    <p>{{ item.perscription }}</p>
+                  </div>
+                  <div class="page4TableItem2 flex flex-wrap">
+                    <div class="page4TableItem1">
+                      <p class="italics">{{ item.duration }}</p>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="HearingHistorySection">
+              <div class="formPage4Head">
+                <p>
+                  Please circle the appropriate number 1-5 according to
+                  severity:
+                </p>
+                <p class="italics">
+                  Por favor circule el número apropiado 1-5 de acuerdo a la
+                  severidad:
+                </p>
+                <p>
+                  <b>0 = no problem | 1 = mild | 5 = very severe</b>
+                </p>
+                <p class="italics">
+                  0 = No hay problema | 1 = leve | 5 = muy severo
+                </p>
+              </div>
+              <div class="HearingHistoryDetail">
+                <div class="page4Table">
+                  <div id="ALLERGYHISTORYRightLastTable">
+                    {% for item in allergy_history_questionnaire.list %}
+                    <div class="flex">
+                      <div class="page4TableItem1">
+                        <p>{{ item.condition }}</p>
+                        <p class="italics">{{ item.conditionTranslate }}</p>
+                      </div>
+                      <div class="page4TableItem2 flex flex-wrap">
+                        {% for value in '01234' %}
+                          <div key="{{ value }}">
+                            <div class="radio-main">
+                              <input type="radio" name="fs7_hear_history_detail{{ item.id }}"
+                                class="radio-custom"
+                                id="fs7_hear_history_detail_{{ item.id }}_{{ value }}"
+                                value="{{ value }}"
+                                {% if value == item.chanceOfDozing %}checked{% endif %}>
+                              <label for="fs7_hear_history_detail_{{ item.id }}_{{ value }}">
+                                {{ value }}
+                              </label>
+                            </div>
+                          </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
