@@ -95,8 +95,8 @@ class GeneratePDF(APIView):
                     file_data = f.read()
                 response = HttpResponse(file_data, content_type='application/pdf')
                 response['Content-Disposition'] = 'attachment; filename="output.pdf"'
-                sender_email = "taloot.khan@zweidevs.com"
-                recipient_email = "taloot.khan@zweidevs.com"
+                sender_email = os.environ['sender_email']
+                recipient_email = os.environ['recipient_email']
                 subject = "Generated FORM PDF"
                 body = "Please find the generated Form PDF attached."
 
