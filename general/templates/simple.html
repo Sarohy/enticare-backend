@@ -1,0 +1,2136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <div>
+        <div>
+          <div>
+          </div>
+          <h2>Enticare</h2>
+        </div>
+        <div>
+          <h2>NEW PATIENT PACKET</h2>
+        </div>
+      </div>
+
+      <!-- <Form> -->
+      <div>
+         <div>
+            <div style="display: flex; align-items: center;">
+              <div style="margin-right: 10px;">
+                <h4 style="font-size: 14px;">REASON FOR TODAYS VISIT</h4>
+              </div>
+              <input
+                type="text"
+                value="{{ start.reason_for_visit }}"
+                name="reason_for_visit"
+                style="border: none; outline: none; flex: 1;"
+              />
+            </div>
+            <div style="display: flex; align-items: center; margin-top: 10px;">
+              <div style="margin-right: 10px;">
+                <h4 style="font-size: 14px;">DATE:</h4>
+              </div>
+              <input
+                type="text"
+                value="{{ start.date }}"
+                name="date"
+                style="border: none; outline: none; flex: 1;"
+              />
+            </div>
+         </div>
+
+
+        <div>
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>RELATIONSHIP TO PATIENT:</h4>
+            </div>
+            <input
+              type="text"
+              value="{{start.relationship_to_patient}}"
+              name="relationship_to_patient"
+              style="border: none; outline: none;"
+            />
+          </div>
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>LEGAL GUARDIAN:</h4>
+            </div>
+            <input
+              type="text"
+              value="{{start.legal_guradian}}"
+              name="legal_guradian"
+              style="border: none; outline: none;"
+            />
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2>PATIENT INFORMATION:</h2>
+
+        <div>
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Patient Name:</h4>
+            </div>
+            <input
+              type="text"
+              name="patient_name"
+              value="{{patient_info.patient_name}}"
+              style="border: none; outline: none;"
+            />
+          </div>
+
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>DOB</h4>
+            </div>
+            <input
+              name="DOB"
+              value="{{patient_info.DOB}}"
+              style="border: none; outline: none;"
+            />
+          </div>
+
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Age:</h4>
+            </div>
+            <input type="text" name="age" value="{{patient_info.age}}" style="border: none; outline: none;" />
+          </div>
+        </div>
+
+        <div>
+          {% comment %} <div class="fs2CheckboxConatiner fs2CheckboxConatinerMargin"> {% endcomment %}
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <p>Sex:</p>
+            </div>
+            {% comment %} <div class="flex flex-wrap" id="genderSelection"> {% endcomment %}
+              <!-- <div style="display: flex" id="genderSelection"></div> -->
+              <div>
+                <div>
+                  <div>
+                    <input type="radio" name="sex" class="radio-custom" id="Male"
+                    value="Male" {% if patient_info.sex == "Male"%}checked{% endif %}
+                    /><label for="Male">Male</label>
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <input type="radio" name="sex" class="radio-custom"
+                    id="Female" value="Female" {% if patient_info.sex == "Female"%}checked{% endif %} /><label for="Female">Female</label>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <p>Marital Status:</p>
+            </div>
+            <div>
+                <div>
+                  <div class="radio-main">
+                    <input type="radio" name="maritial_status"
+                    class="radio-custom" id="Single" value="Single"
+                    {% if patient_info.maritial_status == "Single"%}checked{% endif %}/><label for="Single">Single</label>
+                  </div>
+                  <p class="italics checkboxTranslate"></p>
+                </div >
+                <div>
+                  <div class="radio-main">
+                    <input type="radio" name="maritial_status"
+                    class="radio-custom" id="Married" value="Married"
+                    {% if patient_info.maritial_status == "Married"%}checked{% endif %}/><label for="Married">Married</label>
+                  </div>
+                  <p class="italics checkboxTranslate"></p>
+                </div>
+                <div>
+                  <div class="radio-main">
+                    <input type="radio" name="maritial_status"
+                    class="radio-custom" id="Divorced" value="Divorced"
+                    {% if patient_info.maritial_status == "Divorced"%}checked{% endif %}/><label for="Divorced">Divorced</label>
+                  </div>
+                  <p class="italics checkboxTranslate"></p>
+                </div>
+                <div class="flex">
+                  <div class="radio-main">
+                    <input type="radio" name="maritial_status"
+                    class="radio-custom" id="Widowed" value="Widowed"
+                    {% if patient_info.maritial_status == "Widowed"%}checked{% endif %}/><label for="Widowed">Widowed</label>
+                  </div>
+                  <p class="italics checkboxTranslate"></p>
+                </div>
+                <div>
+                  <div class="radio-main">
+                    <input type="radio" name="maritial_status"
+                    class="radio-custom" id="Other" value="Other"
+                    {% if patient_info.maritial_status == "Other"%}checked{% endif %}/><label for="Other">Other</label>
+                  </div>
+                  <p class="italics checkboxTranslate"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Mailing Address:</h4>
+            </div>
+            <input
+              type="text"
+              name="address"
+              value="{{mailing_address.address}}"
+              style="border: none; outline: none;"
+            />
+          </div>
+
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>City:</h4>
+            </div>
+            <input
+              type="text"
+              name="city"
+              value="{{mailing_address.city}}"
+              style="border: none; outline: none;"
+            />
+          </div>
+
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>State:</h4>
+            </div>
+            <input
+              type="text"
+              name="state"
+              value="{{mailing_address.state}}"
+              style="border: none; outline: none;"
+            />
+          </div>
+
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Zip</h4>
+            </div>
+            <input
+              type="text"
+              name="zip"
+              value="{{mailing_address.zip}}"
+              style="border: none; outline: none;"
+            />
+          </div>
+        </div>
+
+        <div>
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Other Address:</h4>
+            </div>
+            <input
+              type="text"
+              name="address"
+              value="{{other_address.address}}"
+              style="border: none; outline: none;"
+            />
+          </div>
+
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>City:</h4>
+            </div>
+            <input
+              type="text"
+              name="city"
+              value="{{other_address.city}}"
+              style="border: none; outline: none;"
+            />
+          </div>
+
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>State:</h4>
+            </div>
+            <input
+              type="text"
+              name="state"
+              value="{{ other_address.state}}"
+              style="border: none; outline: none;"
+            />
+          </div>
+
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Zip</h4>
+            </div>
+            <input
+              type="text"
+              name="zip"
+              value="{{ other_address.zip}}"
+              style="border: none; outline: none;"
+            />
+          </div>
+        </div>
+
+        <div>
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Home Phone:</h4>
+            </div>
+            <input
+              type="text"
+              name="home_phone"
+              value="{{ home_phone}}"
+              style="border: none; outline: none;"
+            />
+          </div>
+
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Cell Phone:</h4>
+            </div>
+            <input
+              type="text"
+              name="cell_phone"
+              value="{{cell_phone}}"
+              style="border: none; outline: none;"
+            />
+          </div>
+
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Work Phone:</h4>
+            </div>
+            <input
+              type="text"
+              name="work_phone"
+              value="{{work_phone}}"
+              style="border: none; outline: none;"
+            />
+          </div>
+        </div>
+
+        <div>
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>
+                Preferred method for appointment reminders
+                <span style="display: block"> (check all that apply): </span>
+              </h4>
+            </div>
+
+            {% comment %} <div
+              class="flex flex-wrap fs2CheckboxConatinerLongInner"
+              id="appointmentRemindersSelection"
+            > {% endcomment %}
+              <!-- <div
+                style="display: flex"
+                id="appointmentRemindersSelection"
+              ></div> -->
+              <div class="flex flex-wrap fs2CheckboxConatinerLongInner" style="width:200%">
+                <div class="custom-radioBtn1">
+                  <div class="radio-main">
+                    <input type="radio" name="preffered_method"
+                    class="radio-custom" id="homephone" value="homephone"
+                    {% if preffered_method == "homephone"%}checked{% endif %} /><label for="homephone">Home Phone</label>
+                  </div>
+                </div>
+                <div class="custom-radioBtn1">
+                  <div class="radio-main">
+                    <input type="radio" name="preffered_method"
+                    class="radio-custom" id="cellphone" value="cellphone"
+                    {% if preffered_method == "cellphone"%}checked{% endif %} /><label for="cellphone">Cell Phone</label>
+                  </div>
+                </div>
+                <div class="custom-radioBtn1">
+                  <div class="radio-main">
+                    <input type="radio" name="preffered_method"
+                    class="radio-custom" id="text" value="text"
+                    {% if preffered_method == "text"%}checked{% endif %}
+                    /><label for="text">Text</label>
+                  </div>
+                </div>
+                <div class="custom-radioBtn1">
+                  <div class="radio-main">
+                    <input type="radio" name="preffered_method"
+                    class="radio-custom" id="email" value="email"
+                    {% if preffered_method == "email"%}checked{% endif %}
+                    /><label for="email">Email</label>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fs2Conatiner">
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Email (print clearly):</h4>
+            </div>
+            <input
+              type="text"
+              name="email"
+              value="{{email}}"
+              style="border: none; outline: none;"
+            />
+          </div>
+        </div>
+
+        <div class="fs2Conatiner">
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Pharmacy Name & City:</h4>
+            </div>
+            <input
+              type="text"
+              name="pharmacy_name_city"
+              value="{{pharmacy_name_city}}"
+              style="border: none; outline: none;"
+            />
+          </div>
+
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Cross Street:</h4>
+            </div>
+            <input
+              type="text"
+              name="cross_street"
+              value="{{cross_street}}"
+              style="border: none; outline: none;"
+            />
+          </div>
+
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Phone:</h4>
+            </div>
+            <input
+              type="text"
+              name="phone"
+              value="{{phone}}"
+              style="border: none; outline: none;"
+            />
+          </div>
+        </div>
+
+        <div class="divider"></div>
+      </div>
+      <div class="fs3MainContainer">
+        <h2 class="fs2Heading">REFERRAL INFORMATION:</h2>
+        <div class="fs3Container">
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Referring Facility:</h4>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.referring_facility}}"
+              name="referring_facility"
+              style="border: none; outline: none;"
+            />
+          </div>
+
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Address / Location:</h4>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.address}}"
+              name="address"
+              style="border: none; outline: none;"
+            />
+          </div>
+        </div>
+        <div class="fs3Container">
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Referring Provider Full Name:</h4>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.referring_provider_name.name}}"
+              name="name"
+              style="border: none; outline: none;"
+            />
+          </div>
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Phone:</h4>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.referring_provider_name.phone}}"
+              name="phone"
+              style="border: none; outline: none;"
+            />
+          </div>
+        </div>
+
+        <div class="fs3Container">
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Primary Care Physician Full Name:</h4>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.primarycare_provider_name.name}}"
+              name="name"
+              style="border: none; outline: none;"
+            />
+          </div>
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Phone:</h4>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.primarycare_provider_name.phone}}"
+              name="phone"
+              style="border: none; outline: none;"
+            />
+          </div>
+        </div>
+
+        <div class="fs3Conatiner fs3CheckBox">
+          <div>
+            <input type="checkbox" name="self_pay" class="radio-custom"
+            id={'self_pay'} checked={referral_info.selfPay} />
+            <label htmlFor="self_pay" style="font-size: 1rem"> Self Pay </label>
+          </div>
+        </div>
+        <div class="fs3Container">
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Responsible Party/Guardian (if patient is a minor):</h4>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.responsible_party_guardian.guardian}}"
+              name="guardian"
+              style="border: none; outline: none;"
+            />
+          </div>
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Phone:</h4>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.responsible_party_guardian.phone}}"
+              name="phone"
+              style="border: none; outline: none;"
+            />
+          </div>
+        </div>
+
+        <h4 class="fs3HeadingInsurance">Primary Insurance Detail</h4>
+
+        <div class="fs3Container">
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>PRIMARY INSURANCE CO:</h4>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.primary_insurance_detail.primary_insurance_co}}"
+              name="primary_insurance_co"
+              style="border: none; outline: none;"
+            />
+          </div>
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Phone:</h4>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.primary_insurance_detail.phone}}"
+              name="phone"
+              style="border: none; outline: none;"
+            />
+          </div>
+        </div>
+
+        <div class="fs3Container">
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Policy Holder Name:</h4>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.primary_insurance_detail.policy_holder_name}}"
+              name="policy_holder_name"
+              style="border: none; outline: none;"
+            />
+          </div>
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Group #:</h4>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.primary_insurance_detail.group}}"
+              name="group"
+              style="border: none; outline: none;"
+            />
+          </div>
+        </div>
+
+        <div class="fs3Container">
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Relationship to Patient:</h4>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.primary_insurance_detail.relationship_to_patient}}"
+              name="relationship_to_patient"
+              style="border: none; outline: none;"
+            />
+          </div>
+
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4 class="fs2DOBText">DOB</h4>
+            </div>
+            <input
+              class="fs2dateStyle"
+              name="dob"
+              value="{{referral_info.primary_insurance_detail.dob}}"
+              style="border: none; outline: none;"
+            />
+            <!-- <DatePicker
+							class="fs2dateStyle"
+							onChange={(date, dateString) =>
+								onChangeDate(dateString, 'primary_insurance_detail')
+							}
+							name="dob"
+						/> -->
+          </div>
+        </div>
+
+        <h4 class="fs3HeadingInsurance">Secondary Insurance Detail</h4>
+
+        <div class="fs3Container">
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>SECONDARY INSURANCE CO:</h4>
+            </div>
+            <input
+              type="text"
+              {% comment %} value="{{ referral_info.secondary_insurance_detail.secondary_insurance_co }}" {% endcomment %}
+              value="{{referral_info.secondary_insurance_detail.secondary_insurance_co}}"
+              name="secondary_insurance_co"
+              style="border: none; outline: none;"
+            />
+          </div>
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Phone:</h4>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.secondary_insurance_detail.phone}}"
+              name="phone"
+              style="border: none; outline: none;"
+            />
+          </div>
+        </div>
+
+        <div class="fs3Container">
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Policy Holder Name:</h4>
+            </div>
+            <input
+              type="text"
+              {% comment %} value="{{referral_info.secondary_insurance_detail.policy_holder_name}}" {% endcomment %}
+              value="{{referral_info.secondary_insurance_detail.policy_holder_name}}"
+              name="policy_holder_name"
+              style="border: none; outline: none;"
+            />
+          </div>
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Group #:</h4>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.secondary_insurance_detail.group}}"
+              name="group"
+              style="border: none; outline: none;"
+            />
+          </div>
+        </div>
+
+        <div class="fs3Container">
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>Relationship to Patient:</h4>
+            </div>
+            <input
+              type="text"
+              value="{{referral_info.secondary_insurance_detail.relationship_to_patient}}"
+              name="relationship_to_patient"
+              style="border: none; outline: none;"
+            />
+          </div>
+
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4 class="fs2DOBText">DOB</h4>
+            </div>
+            <input
+              class="fs2dateStyle"
+              name="dob"
+              value="{{secondary_insurance_detail.dob}}"
+              style="border: none; outline: none;"
+            />
+            
+          </div>
+        </div>
+      <div class="divider"></div>
+      </div>
+      <div class="fs4MainContainer">
+        <h2 class="fs4PrivacyHeading">
+          Federal Privacy Standards require the following information
+        </h2>
+
+        <div>
+          <div class="fs4Conatiner">
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+                <h4 style="font-size: 1rem">Race</h4>
+              </div>
+              {% comment %} <div
+                class="flex flex-wrap ml-2"
+                style="width: 85%"
+                id="raceSelection"
+              > {% endcomment %}
+                <!-- <div style="display: flex" ></div> -->
+
+<div class="flex flex-wrap ml-2" style="width: 95%">
+  <div class="custom-radioBtn1">
+    <div class="radio-main">
+      <input type="radio" name="race" class="radio-custom"
+      id="White" value="White"
+      {% if federal_privacy_standards.race == "White"%}checked{% endif %}
+      /><label for="White">White</label>
+    </div>
+  </div>
+  <div class="custom-radioBtn1">
+    <div class="radio-main">
+      <input type="radio" name="race" class="radio-custom"
+      id="Hispanic" value="Hispanic"
+      {% if federal_privacy_standards.race == "Hispanic"%}checked{% endif %} /><label for="Hispanic">Hispanic</label>
+    </div>
+  </div>
+  <div class="custom-radioBtn1">
+    <div class="radio-main">
+      <input type="radio" name="race" class="radio-custom"
+      id="Asian" value="Asian"
+      {% if federal_privacy_standards.race == "Asian"%}checked{% endif %}
+      /><label for="Asian">Asian</label>
+    </div>
+  </div>
+  <div class="custom-radioBtn1">
+    <div class="radio-main">
+      <input type="radio" name="race" class="radio-custom"
+      id="African American" value="African American"
+      {% if federal_privacy_standards.race == "African American"%}checked{% endif %} /><label for="African American"
+        >African American</label
+      >
+    </div>
+  </div>
+  <div class="custom-radioBtn1">
+    <div class="radio-main">
+      <input type="radio" name="race" class="radio-custom"
+      id="American Indian / Alaskan Native" value="American Indian
+      / Alaskan Native"
+      {% if federal_privacy_standards.race == "American Indian / Alaskan Native"%}checked{% endif %} /><label
+        for="American Indian / Alaskan Native"
+        >American Indian / Alaskan Native</label
+      >
+    </div>
+  </div>
+  <div class="custom-radioBtn1">
+    <div class="radio-main">
+      <input type="radio" name="race" class="radio-custom"
+      id="Native Hawaiian or Other Pacific Islander" value="Native
+      Hawaiian or Other Pacific Islander"
+      {% if federal_privacy_standards.race == "Native Hawaiian or Other Pacific Islander"%}checked{% endif %} /><label
+        for="Native Hawaiian or Other Pacific Islander"
+        >Native Hawaiian or Other Pacific Islander</label
+      >
+    </div>
+  </div>
+  <div class="custom-radioBtn1">
+    <div class="radio-main">
+      <input type="radio" name="race" class="radio-custom"
+      id="Other Race" value="Other Race"
+      {% if federal_privacy_standards.race == "Other Race"%}checked{% endif %} /><label for="Other Race">Other Race</label>
+    </div>
+  </div>
+  <div>
+    <div class="radio-main">
+      <input type="radio" name="race" class="radio-custom"
+      id="Unreported / Refused to Report" value="Unreported /
+      Refused to Report"
+      {% if federal_privacy_standards.race == "Unreported / Refused to Report"%}checked{% endif %} /><label
+        for="Unreported / Refused to Report"
+        >Unreported / Refused to Report</label>
+    </div>
+  </div>
+              </div>
+            </div>
+          </div>
+          <div class="fs4Conatiner">
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+                <h4 style="font-size: 1rem">Ethnicity</h4>
+              </div>
+              {% comment %} <div
+                class="flex flex-wrap ml-2"
+                style="width: 85%"
+                id="ethnicitySelection"
+              > {% endcomment %}
+                <!-- <div style="display: flex" ></div> -->
+                <div class="flex flex-wrap ml-2" style="width: 95%">
+                  <div class="custom-radioBtn1">
+                    <div class="radio-main">
+                      <input type="radio" name="ethnicity" class="radio-custom"
+                      id="Hispanic or Latino" value="Hispanic or Latino"
+                      {% if federal_privacy_standards.ethnicity == "Hispanic or Latino"%}checked{% endif %} /><label for="Hispanic or Latino"
+                        >Hispanic or Latino</label
+                      >
+                    </div>
+                  </div>
+                  <div class="custom-radioBtn1">
+                    <div class="radio-main">
+                      <input type="radio" name="ethnicity" class="radio-custom"
+                      id="Not Hispanic or Latino" value="Not Hispanic or Latino"
+                      {% if federal_privacy_standards.ethnicity == "Not Hispanic or Latino"%}checked{% endif %} /><label for="Not Hispanic or Latino"
+                        >Not Hispanic or Latino</label
+                      >
+                    </div>
+                  </div>
+                  <div>
+                    <div class="radio-main">
+                      <input type="radio" name="ethnicity" class="radio-custom"
+                      id="Refused to Report" value="Refused to Report"
+                      {% if federal_privacy_standards.ethnicity == "Refused to Report"%}checked{% endif %} /><label for="Refused to Report"
+                        >Refused to Report</label
+                      >
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="fs4Conatiner">
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+                <h4 style="font-size: 1rem">Preferred Language:</h4>
+              </div>
+
+              {% comment %} <div
+                class="flex flex-wrap ml-2"
+                style="width: 85%"
+                id="languageSelection"
+              > {% endcomment %}
+                <!-- <div style="display: flex" ></div> -->
+              <div style="display: flex; align-items: center; margin-top: 10px;">
+                <div style="margin-right: 10px;">
+                    <div class="radio-main">
+                      <input type="radio" name="preffered_language"
+                      class="radio-custom" id="Englishpreffered_language"
+                      value="English"
+                      {% if federal_privacy_standards.preffered_language == "English"%}checked{% endif %} /><label for="Englishpreffered_language"
+                        >English</label
+                      >
+                    </div>
+                  </div>
+                  <div class="custom-radioBtn1">
+                    <div class="radio-main">
+                      <input type="radio" name="preffered_language"
+                      class="radio-custom" id="Spanishpreffered_language"
+                      value="Spanish"
+                      {% if federal_privacy_standards.preffered_language == "Spanish"%}checked{% endif %} /><label for="Spanishpreffered_language"
+                        >Spanish</label
+                      >
+                    </div>
+                  </div>
+                  <div>
+                    <div class="radio-main">
+                      <input type="radio" name="preffered_language"
+                      class="radio-custom" id="Otherpreffered_language"
+                      value="Other"
+                      {% if federal_privacy_standards.preffered_language == "Other"%}checked{% endif %} /><label for="Otherpreffered_language"
+                      >Other</label
+                      >
+                    </div>
+                    <p class="italics checkboxTranslate">Otro</p>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h2 class="fs4Heading">HIPAA APPROVED CONTACTS:</h2>
+          <ul>
+            <li class="fsListItem">
+              Please list the individuals you give permission to have access to
+              and discuss your protected health information.
+            </li>
+            <li class="fsListItem">
+              Write NONE if there are no authorized individuals.
+            </li>
+          </ul>
+
+          <div class="fs4Container">
+            <div style="display: flex; align-items: center; margin-top: 10px;">
+              <div style="margin-right: 10px;">
+                <h4>Name:</h4>
+              </div>
+              <input
+                type="text"
+                name="name"
+                value="{{hippa_approved_contacts.contact1.name}}"
+                style="border: none; outline: none;"
+              />
+            </div>
+            <div style="display: flex; align-items: center; margin-top: 10px;">
+              <div style="margin-right: 10px;">
+                <h4>DOB:</h4>
+              </div>
+              <input
+                type="text"
+                name="DOB"
+                value="{{hippa_approved_contacts.contact1.DOB}}"
+                style="border: none; outline: none;"
+              />
+            </div>
+            <div style="display: flex; align-items: center; margin-top: 10px;">
+              <div style="margin-right: 10px;">
+                <h4>Phone:</h4>
+              </div>
+              <input
+                type="text"
+                name="phone"
+                value="{{hippa_approved_contacts.contact1.phone}}"
+                style="border: none; outline: none;"
+              />
+            </div>
+            <div style="display: flex; align-items: center; margin-top: 10px;">
+              <div style="margin-right: 10px;">
+                <h4>Relation to patient:</h4>
+              </div>
+              <input
+                type="text"
+                name="relationship_to_patient"
+                {% comment %} value="{{hippa_approved_contacts.contact1.relationship_to_patient}}" {% endcomment %}
+                value="{{hippa_approved_contacts.contact1.relationship_to_patient}}"
+                style="border: none; outline: none;"
+              />
+            </div>
+          </div>
+
+          <div class="fs4Container">
+            <div style="display: flex; align-items: center; margin-top: 10px;">
+              <div style="margin-right: 10px;">
+                <h4>Name:</h4>
+              </div>
+              <input
+                type="text"
+                name="name"
+                value="{{hippa_approved_contacts.contact2.name}}"
+                style="border: none; outline: none;"
+              />
+            </div>
+            <div style="display: flex; align-items: center; margin-top: 10px;">
+              <div style="margin-right: 10px;">
+                <h4>DOB:</h4>
+              </div>
+              <input
+                type="text"
+                name="DOB"
+                value="{{hippa_approved_contacts.contact2.DOB}}"
+                style="border: none; outline: none;"
+              />
+            </div>
+            <div style="display: flex; align-items: center; margin-top: 10px;">
+              <div style="margin-right: 10px;">
+                <h4>Phone:</h4>
+              </div>
+              <input
+                type="text"
+                name="phone"
+                value="{{hippa_approved_contacts.contact2.phone}}"
+                style="border: none; outline: none;"
+              />
+            </div>
+            <div style="display: flex; align-items: center; margin-top: 10px;">
+              <div style="margin-right: 10px;">
+                <h4>Relation to patient:</h4>
+              </div>
+              <input
+                type="text"
+                name="relationship_to_patient"
+                {% comment %} value="{{hippa_approved_contacts.contact2.relationship_to_patient}}" {% endcomment %}
+                value="{{hippa_approved_contacts.contact2.relationship_to_patient}}"
+                style="border: none; outline: none;"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="fs4Heading">EMERGENCY CONTACT (REQUIRED):</h2>
+
+          <div class="fs4Container">
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+                <h4>Name:</h4>
+              </div>
+              <input
+                type="text"
+                name="name"
+                value="{{emergency_contact.contact1.name}}"
+                style="border: none; outline: none;"
+              />
+            </div>
+            <div style="display: flex; align-items: center; margin-top: 10px;">
+              <div style="margin-right: 10px;">
+                <h4>DOB:</h4>
+              </div>
+              <input
+                type="text"
+                name="DOB"
+                value="{{emergency_contact.contact1.DOB}}"
+                style="border: none; outline: none;"
+              />
+            </div>
+            <div style="display: flex; align-items: center; margin-top: 10px;">
+              <div style="margin-right: 10px;">
+                <h4>Phone:</h4>
+              </div>
+              <input
+                type="text"
+                name="phone"
+                value="{{emergency_contact.contact1.phone}}"
+                style="border: none; outline: none;"
+              />
+            </div>
+            <div style="display: flex; align-items: center; margin-top: 10px;">
+              <div style="margin-right: 10px;">
+                <h4>Relation to patient:</h4>
+              </div>
+              <input
+                type="text"
+                name="relationship_to_patient"
+                value="{{emergency_contact.contact1.relationship_to_patient}}"
+                style="border: none; outline: none;"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="fs2Border"></div>
+      </div>
+      <!-- </Form> -->
+    </div>
+    <!-- page2 -->
+    <div class="formPage2Main flex">
+      <div class="formSection1">
+        <div class="sectionHeightWeight flex justify-content-between">
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>What is your Weight?</h4>
+            </div>
+            <input
+              type="text"
+              name="weight"
+              value="{{weight}}"
+              class="heightWeightInput"
+              style="border: none; outline: none;"
+            />
+          </div>
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="margin-right: 10px;">
+              <h4>What is your Height?</h4>
+            </div>
+            <input
+              type="text"
+              name="height"
+              value="{{height}}"
+              class="heightWeightInput"
+              style="border: none; outline: none;"
+            />
+          </div>
+        </div>
+        <div class="divider"></div>
+
+        <div class="medicationsSection">
+          <div>
+            <div class="flex">
+              <div>
+                <h4 class="heading">Medications</h4>
+              </div>
+              <div class="medicationsSectionCheckbox">
+                <input
+                  type="checkbox"
+                  name="none"
+                  id="none_medics"
+                  checked="{medications.none}"
+                  value="{{medications.none}}"
+                  style="border: none; outline: none;"
+                />
+                <label htmlFor="none_medics">None</label>
+              </div>
+            </div>
+            <div class="medicationsSectionInfo">
+              <ul>
+                <li>
+                  Please list all the medications you are taking, including
+                  supplements (attach list as needed).
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="medicationsSectionDetail">
+            <input
+              type="text"
+              name="medication1"
+              value="{{medications.list.medication1}}"
+              style="border: none; outline: none;"
+            />
+            <input
+              type="text"
+              name="medication2"
+              value="{{medications.list.medication2}}"
+              style="border: none; outline: none;"
+            />
+            <input
+              type="text"
+              name="medication3"
+              value="{{medications.list.medication3}}"
+              style="border: none; outline: none;"
+            />
+          </div>
+          <div class="divider"></div>
+        </div>
+
+        <div class="allergiesSection">
+          <div>
+            <div class="flex">
+              <div>
+                <h4 class="heading">Allergies</h4>
+              </div>
+
+              <div class="medicationsSectionCheckbox">
+                <input
+                  type="checkbox"
+                  name="none"
+                  id="none_allergies"
+                  checked="{allergies.none}"
+                  value="{{allergies.none}}"
+                  style="border: none; outline: none;"
+                />
+                <label htmlFor="none_allergies">None</label>
+              </div>
+            </div>
+            <div>
+              <div class="allergiesQuiz1 flex align-items-center">
+                <div>
+                  <p>Are you allergic to:</p>
+                </div>
+                <div class="flex justify-content-between allergiesQuiz1Choices">
+                  <div class="custom-radioBtn">
+                    <div class="radio-main">
+                      <input
+                        type="radio"
+                        name="allergic_to"
+                        class="radio-custom"
+                        id="latex"
+                        value="latex"
+                        {% if allergies.allergic_to == "latex" %}checked{% endif %}
+                      />
+                      <label htmlFor="latex">Latex</label>
+                    </div>
+                  </div>
+                  <div class="custom-radioBtn">
+                    <div class="radio-main">
+                      <input
+                        type="radio"
+                        name="allergic_to"
+                        class="radio-custom"
+                        id="contrast_dye"
+                        value="contrast_dye"
+                        {% if allergies.allergic_to == "contrast_dye" %}checked{% endif %}/>
+                      <label htmlFor="contrast_dye">Contrast Dye</label>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="radio-main">
+                      <input
+                        type="radio"
+                        name="allergic_to"
+                        class="radio-custom"
+                        id="iodine"
+                        value="iodine"
+                        {% if allergies.allergic_to == "iodine" %}checked{% endif %}/>
+                      <label htmlFor="iodine">Iodine</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="allergiesSectionInfo">
+              <ul>
+                <li>
+                  Please list any medications you are allergic to and how each
+                  affects you.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="allergiesSectionDetail">
+            <input
+              type="text"
+              name="medication1"
+              value="{{allergies.medications_allergic_to}}"
+              style="border: none; outline: none;"
+            />
+            <input
+              type="text"
+              name="medication2"
+              value="{{allergies.medications_allergic_to}}"
+              style="border: none; outline: none;"
+            />
+            <input
+              type="text"
+              name="medication3"
+              value="{{allergies.medications_allergic_to}}"
+              style="border: none; outline: none;"
+            />
+          </div>
+          <div class="divider"></div>
+        </div>
+
+        <div class="surgerySection">
+          <div>
+            <div class="flex">
+              <div>
+                <h4 class="heading">Surgery History</h4>
+              </div>
+
+              <div class="surgerySectionCheckbox">
+                <input
+                  type="checkbox"
+                  name="none"
+                  id="none_surgey"
+                  checked="{surgery_history.none}"
+                  value="{{surgery_history.none}}"
+                />
+                <label htmlFor="none_surgey">None</label>
+              </div>
+            </div>
+            <div>
+              <div class="surgerySectionQuiz1 flex align-items-center">
+                <div>
+                  <p>Have you ever had problems with anesthesia?</p>
+                </div>
+                <div class="flex socialHistorySectionCheckbox">
+                  <div style="width:35%">
+                    <div class="radio-main">
+                      <input
+                        type="radio"
+                        name="have_anesthesia"
+                        class="radio-custom"
+                        id="yes"
+                        value="yes"
+                        {% if surgery_history.have_anesthesia == "yes" %}checked{% endif %}/>
+                      <label htmlFor="yes">Yes</label>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="radio-main">
+                      <input
+                        type="radio"
+                        name="have_anesthesia"
+                        class="radio-custom"
+                        id="no"
+                        value="no"
+                        {% if surgery_history.have_anesthesia == "no" %}checked{% endif %}/>
+                      <label htmlFor="no">No</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="surgerySectionInfo">
+              <div class="flex align-items-center">
+                <div style="width: 150px">
+                  <p>Please explain:</p>
+                </div>
+                <input
+                  type="text"
+                  name="explain"
+                  class="radio-custom"
+                  value="{{surgery_history.explain}}"
+                  style="border: none; outline: none;"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="surgerySectionDetail mt-1">
+            <div class="surgerySectionHead flex">
+              <div>
+                <h4>PROCEDURE</h4>
+              </div>
+              <div>
+                <h4>DATE (MO/YR)</h4>
+              </div>
+            </div>
+            <div>
+              {% if surgery_history.procedure %}
+                {% for item in surgery_history.procedure %}
+                <div class="flex">
+                  <div class="page4TableItem1">
+                    <p>{{ item.procedure }}</p>
+                  </div>
+                  <div class="page4TableItem2 flex flex-wrap">
+                    <div class="page4TableItem1">
+                      <p class="italics">{{ item.time }}</p>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              {% endif %}
+            </div> 
+          </div>
+          <div class="divider"></div>
+        </div>
+      </div>
+
+      <div class="formSection2">
+        <div class="familyHistorySection">
+          <div>
+            <div class="flex">
+              <div>
+                <h4 class="heading">FAMILY HISTORY</h4>
+              </div>
+
+              <div class="familyHistorySectionCheckbox">
+                <input
+                  type="checkbox"
+                  name="none"
+                  id="none_family_history"
+                  checked="{data.family_history.none}"
+                  value="{{family_history.none}}"
+                />
+                <label htmlFor="none_family_history">None</label>
+                <p class="italics">Ninguno</p>
+              </div>
+            </div>
+            <div>
+              <p class="familyHistorySectionText">
+                Please list any family history of your
+                <b>Father, Mother, Siblings, Children</b> and
+                <b>Grandparents</b>
+              </p>
+            </div>
+          </div>
+          <div>
+            <div>
+              <div>
+                <h4>CONDITION</h4>
+              </div>
+              <div>
+                <h4>RELATIONSHIP</h4>
+              </div>
+            </div>
+            <div>
+              {% for item in family_history.conditions_relationships %}
+              <div>
+                <div>
+                  <p>{{ item.condition }}</p>
+                  <p class="italics">{{ item.translation }}</p>
+                </div>
+                <div>
+                  <div>
+                    <p class="italics">{{ item.relationship }}</p>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="divider"></div>
+        </div>
+        <div class="socialHistorySection">
+          <div>
+            <div class="flex">
+              <div>
+                <h4 class="heading">SOCIAL HISTORY:</h4>
+              </div>
+              <div class="socialHistorySectionCheckbox">
+                <input
+                  type="checkbox"
+                  name="none"
+                  id="none_social_history"
+                  checked="{social_history.none}"
+                  value="{{social_history.none}}"
+                />
+                <label htmlFor="none_social_history">None</label>
+              </div>
+            </div>
+            <div>
+              <div class="socialHistoryQuiz flex align-items-center">
+                <div>
+                  <p>Are you a:</p>
+                </div>
+                <div class="flex felx-wrap" style="width:70%">
+                  <div style="custom-radioBtn">
+                    <div class="radio-main">
+                      <input type="radio" name="smoker_type"
+                      class="radio-custom" id="non_smoker" value="non_smoker"
+                      {% if social_history.smoker_type == "non_smoker" %}checked{% endif %} />
+                      <label htmlFor="non_smoker">Non Smoker</label>
+                    </div>
+                  </div>
+                  <div style="custom-radioBtn">
+                    <div class="radio-main">
+                      <input type="radio" name="smoker_type"
+                      class="radio-custom" id="former_smoker"
+                      value="former_smoker"
+                      {% if social_history.smoker_type == "former_smoker" %}checked{% endif %} />
+                      <label htmlFor="former_smoker">Former Smoker</label>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="radio-main">
+                      <input type="radio" name="smoker_type"
+                      class="radio-custom" id="current_smoker"
+                      value="current_smoker"
+                      {% if social_history.smoker_type == "current_smoker" %}checked{% endif %} />
+                      <label htmlFor="current_smoker">Current Smoker</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="former_smoker">
+              <p>If <b>"Former Smoker"</b></p>
+              <div style="display: flex; align-items: center; margin-top: 10px;">
+                <div style="margin-right: 10px;">
+                  <p>How long did you smoke?</p>
+                </div>
+                <input
+                  name="how_long_did_you_somke"
+                  value="{{social_history.former_smoker.how_long_did_you_somke}}"
+                  type="text"
+                  style="border: none; outline: none;"
+                />
+              </div>
+              <div style="display: flex; align-items: center; margin-top: 10px;">
+                <div style="margin-right: 10px;">
+                  <p>When did you quit?</p>
+                </div>
+                <input
+                  name="when_did_you_quit"
+                  value="{{social_history.former_smoker.how_when_did_you_quit}}"
+                  type="text"
+                  style="border: none; outline: none;"
+                />
+              </div>
+            </div>
+            <div class="current_smoker" style="margin-top: 1em">
+              <p>If <b>"Current Smoker"</b></p>
+              <div class="flex align-items-center socialHistorySmoker">
+                <div style="width: 535px">
+                  <p>How many packs per day do you smoke?</p>
+                </div>
+                <input
+                  name="how_many_packs_per_day_do_you_smoke"
+                  value="{{social_history.current_smoker.how_many_packs_per_day_do_you_smoke}}"
+                  style="border: none; outline: none;"
+                />
+              </div>
+              <div class="flex align-items-center socialHistorySmoker">
+                <div style="width: 310px; margin-top: 1em">
+                  <p>How long have you smoked?</p>
+                </div>
+                <input
+                  name="how_long_have_you_smoked"
+                  value="{{social_history.current_smoker.how_long_have_you_smoked}}"
+                  style="border: none; outline: none;"
+                />
+              </div>
+            </div>
+            <div
+              class="socialHistoryQuiz2 flex align-items-center"
+              style="margin-top: 1em"
+            >
+              <div class="mr-1">
+                <p>Are you interested in quitting?</p>
+              </div>
+              <div class="flex socialHistorySectionCheckbox">
+                <div class="custom-radioBtn">
+                  <div class="radio-main">
+                    <input type="radio" name="interested_in_quitting"
+                    class="radio-custom" id="interseted_quiting_yes" value="yes"
+                    {% if social_history.current_smoker.interested_in_quitting == "yes" %}checked{% endif %} />
+                    <label htmlFor="interseted_quiting_yes">Yes</label>
+                  </div>
+                </div>
+                <div>
+                  <div class="radio-main">
+                    <input type="radio" name="interested_in_quitting"
+                    class="radio-custom" id="interseted_quiting_no" value="no"
+                    {% if social_history.current_smoker.interested_in_quitting == "no" %}checked{% endif %} />
+                    <label htmlFor="interseted_quiting_no">No</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="socialHistoryQuiz2 flex align-items-center"
+              style="margin-top: 1em"
+            >
+              <div class="mr-1">
+                <p>Do you drink?</p>
+              </div>
+              <div class="flex socialHistorySectionCheckbox">
+                <div class="custom-radioBtn">
+                  <div class="radio-main">
+                    <input type="radio" name="do_you_drink" class="radio-custom"
+                    id="drink_yes" value="yes"
+                    {% if social_history.current_smoker.how_often_do_you_drink == "yes" %}checked{% endif %} />
+                    <label htmlFor="drink_yes">Yes</label>
+                  </div>
+                </div>
+                <div>
+                  <div class="radio-main">
+                    <input type="radio" name="do_you_drink" class="radio-custom"
+                    id="drink_no" value="no"
+                    {% if social_history.current_smoker.how_often_do_you_drink == "no" %}checked{% endif %} />
+                    <label htmlFor="drink_no">No</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="socialHistoryQuiz2 flex align-items-center"
+              style="margin-top: 1em"
+            >
+              <div class="mr-1">
+                <p>If <b>Yes</b>: How often do you drink?</p>
+              </div>
+              <div class="flex socialHistorySectionCheckbox">
+                <div class="custom-radioBtn">
+                  <div class="radio-main">
+                    <input type="radio" name="how_often_do_you_drink"
+                    class="radio-custom" id="Daily" value="Daily"
+                    {% if social_history.current_smoker.how_often_do_you_drink == "Daily" %}checked{% endif %} />
+                    <label htmlFor="Daily">Daily</label>
+                  </div>
+                </div>
+                <div class="custom-radioBtn">
+                  <div class="radio-main">
+                    <input type="radio" name="how_often_do_you_drink"
+                    class="radio-custom" id="Few" value="Few"
+                    {% if social_history.current_smoker.how_often_do_you_drink == "Few" %}checked{% endif %} />
+                    <label htmlFor="Few">Few per week/mo</label>
+                  </div>
+                </div>
+                <div>
+                  <div class="radio-main">
+                    <input type="radio" name="how_often_do_you_drink"
+                    class="radio-custom" id="Rarely" value="Rarely"
+                    {% if social_history.current_smoker.how_often_do_you_drink == "Rarely" %}checked{% endif %} />
+                    <label htmlFor="Rarely">Rarely</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="divider"></div>
+        </div>
+
+        <div class="drugUseSection">
+          <div>
+            <div class="">
+              <div>
+                <h4 class="heading">RECREATIONAL DRUG USE:</h4>
+              </div>
+            </div>
+            <div>
+              <div class="">
+                <div class="flex felx-wrap">
+                  <div>
+                    <div class="radio-main">
+                      <input type="radio" name="used" class="radio-custom"
+                      id="recreational_never" value="Never"
+                      {% if recreational_drug_use.last_used == "Never" %}checked{% endif %}/>
+                      <label htmlFor="recreational_never">Never</label>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="radio-main">
+                      <input type="radio" name="used" class="radio-custom"
+                      id="recreational_previous" value="Previous"
+                      {% if recreational_drug_use.last_used == "Previous" %}checked{% endif %}/>
+                      <label htmlFor="recreational_previous">Previous</label>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="radio-main">
+                      <input type="radio" name="used" class="radio-custom"
+                      id="recreational_current" value="Current"
+                      {% if recreational_drug_use.last_used == "Current" %}checked{% endif %} />
+                      <label htmlFor="recreational_current">Current</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="flex align-items-center socialHistorySmoker">
+                <div style="width: 60px">
+                  <p>Drugs</p>
+                </div>
+                <input
+                  name="drug"
+                  value="{{recreational_drug_use.drug}}"
+                  style="border: none; outline: none;"
+                />
+              </div>
+              <div class="flex align-items-center socialHistorySmoker">
+                <div style="width: 145px; margin-top: 1em">
+                  <p>Last Used:</p>
+                </div>
+                <input
+                  name="last_used"
+                  value="{{recreational_drug_use.last_used}}"
+                  style="border: none; outline: none;"
+                />
+              </div>
+              <div class="border drugUseSectionFemaleOnly">
+                <h4>Female Patients Only</h4>
+                <div class="femaleOnlyQuiz flex align-items-center">
+                  <div>
+                    <p>
+                      Are you now or is there a chance that you are pregnant?
+                    </p>
+                  </div>
+
+                  <div class="flex drugUseSectionCheckbox">
+                    <div>
+                      <div class="radio-main">
+                        <input type="radio" name="female_only"
+                        class="radio-custom" id="female_yes" value="yes"
+                        {% if recreational_drug_use.female_only == "yes" %}checked{% endif %} />
+                        <label htmlFor="female_yes">Yes</label>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="radio-main">
+                        <input type="radio" name="female_only"
+                        class="radio-custom" id="female_no" value="no"
+                        {% if recreational_drug_use.female_only == "no" %}checked{% endif %}/>
+                        <label htmlFor="female_no">No</label>
+                      </div>
+                      <p class="italics checkboxTranslate">No</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="divider"></div>
+        </div>
+      </div>
+    </div>
+    <!-- page3 -->
+    <div class="formPage3Main">
+      <div class="fs5Main flex">
+        <div class="fs5Section1">
+          <div>
+            <div class="medicHistoryText">
+              <h4 class="fs5Heading">MEDICAL HISTORY:</h4>
+              <p class="fs5BoldText">ALL PATIENTS</p>
+            </div>
+            <p class="fs5SubHeading">
+              Have you ever been <span class="fs5BoldText">DIAGNOSED</span>
+              with any of the following conditions?
+            </p>
+          </div>
+          <div>
+            {% for item in medical_history %}
+              <div style="display: flex">
+                <h4 style="width:460px">
+                  {{item.condition}}
+                  <span >{{item.translation}}</span>
+                </h4>
+                <div>
+                  <div class="flex flex-wrap ml-2" style="width:%">
+                    <div>
+                      <div class="radio-main">
+                        <input type="radio" name="medhistory{{item.id}}"
+                        class="radio-custom" id="fs5yes{{item.id}}" value="Yes" {% if item.selected == "Yes" %}checked{% endif %}>
+                        <label for="fs5yes1{{item.id}}">Yes <span class="italics">Si</span></label>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="radio-main">
+                        <input type="radio" name="medhistory{{item.id}}"
+                        class="radio-custom" id="fs5no{{item.id}}" value="No" {% if item.selected == "No" %}checked{% endif %}>
+                        <label for="fs5no1{{item.id}}">No <span class="italics">No</span></label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="fs5Border"></div>
+          <div style="margin-top: 2%">
+            <h4 class="fs5Heading">REVIEW OF SYMPTOMS:</h4>
+            <p class="fs5SubHeading">
+              Do you <span class="fs5BoldText">NOW</span> have any of the
+              following symptoms?
+            </p>
+          </div>
+          <div>
+            {% for item in review_of_symptoms1 %}
+              <div style="display: flex">
+                <h4 style="width:460px">
+                  {{item.condition}}
+                  <span >{{item.translation}}</span>
+                </h4>
+                <div>
+                  <div class="flex flex-wrap ml-2" style="width:%">
+                    <div>
+                      <div class="radio-main">
+                        <input type="radio" name="medhistory{{item.id}}"
+                        class="radio-custom" id="fs5yes{{item.id}}" value="Yes" {% if item.selected == "Yes" %}checked{% endif %}>
+                        <label for="fs5yes1{{item.id}}">Yes </label>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="radio-main">
+                        <input type="radio" name="medhistory{{item.id}}"
+                        class="radio-custom" id="fs5no{{item.id}}" value="No" {% if item.selected == "No" %}checked{% endif %}>
+                        <label for="fs5no1{{item.id}}">No</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="fs5Section2">
+          <div>
+            {% for item in review_of_symptoms2 %}
+              <div style="display: flex">
+                <h4 style="width:460px">
+                  {{item.condition}}
+                  <span >{{item.translation}}</span>
+                </h4>
+                <div>
+                  <div class="flex flex-wrap ml-2" style="width:%">
+                    <div>
+                      <div class="radio-main">
+                        <input type="radio" name="medhistory{{item.id}}"
+                        class="radio-custom" id="fs5yes{{item.id}}" value="Yes" {% if item.selected == "Yes" %}checked{% endif %}>
+                        <label for="fs5yes1{{item.id}}">Yes </label>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="radio-main">
+                        <input type="radio" name="medhistory{{item.id}}"
+                        class="radio-custom" id="fs5no{{item.id}}" value="No" {% if item.selected == "No" %}checked{% endif %}>
+                        <label for="fs5no1{{item.id}}">No</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="fs5Border"></div>
+
+          {% comment %} <div> {% endcomment %}
+            <div class="fs7TextContainer">
+              <h4 style="width:300px" class="fs7MainHeading">EUSTACHIAN TUBE DYSFUNCTION</h4>
+              <p  style="width:500px" class="fs7Heading">
+                During the last month, how much of a problem was each of the
+                following:
+              </p>
+              <p style="width:500px"  class="fs7RangeText">
+                0 = no problem <span class="fs7spanBorder">|</span> 2 = moderate
+                problem <span class="fs7spanBorder">|</span> 5 = very severe
+              </p>
+            </div>
+          {% comment %} </div> {% endcomment %}
+          <div class="fs7ScoreTable">
+            <div id="EUSTACHIANTUBEDYSFUNCTION">
+              {% for item in eustachian_tube_dysfunction.list %}
+                <div class="flex">
+                  <div class="page4TableItem1">
+                    <p>{{ item.condition }}</p>
+                    <p class="italics">{{ item.translation }}</p>
+                  </div>
+                  <div class="page4TableItem2 flex flex-wrap">
+                    {% for value in '01234' %}
+                    <div key="{{ value }}">
+                      <div class="radio-main">
+                        <input type="radio" name="fs7_hear_history_detail{{ item.id }}"
+                          class="radio-custom"
+                          id="fs7_hear_history_detail_{{ item.id }}_{{ value }}"
+                          value="{{ value }}"
+                          {% if value == item.range %}checked{% endif %}>
+                        <label for="fs7_hear_history_detail_{{ item.id }}_{{ value }}">
+                          {{ value }}
+                        </label>
+                      </div>
+                    </div>
+                  {% endfor %}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+
+          {% comment %} <div class="fs7ScoreCalculation">
+            <div>
+              <h4 class="fs7TotalHeading">Total Score</h4>
+              <p class="italics">Puntuación total</p>
+            </div>
+            <div class="fs7InputFieldContainer">
+              <input
+                type="text"
+                name="totalScore"
+                class="radio-custom"
+                id="totalScore"
+                value="{{eustachian_tube_dysfunction.totalScore}}"
+              />
+            </div>
+            <div>
+              <h4 class="fs7TotalHeading">+ 7 = Mean Item Score</h4>
+              <p class="italics">+ 7 = Puntuación de elementos medios</p>
+            </div>
+            <div class="fs7InputFieldContainer">
+              <input
+                type="text"
+                name="itemScore"
+                class="radio-custom"
+                id="itemScore"
+                value="{{eustachian_tube_dysfunction.itemScore}}"
+              />
+            </div>
+          </div> {% endcomment %}
+
+          <div class="fs7ScoreCalculation">
+            <div class="fs7ScoreCalculationFDiv">
+              <div>
+                <h4 class="fs7TotalHeading">Total Score</h4>
+              </div>
+              <div class="fs7InputFieldContainer">
+                <input
+                  type="text"
+                  name="totalScore"
+                  class="radio-custom"
+                  id="totalScore"
+                  value="{{eustachian_tube_dysfunction.totalScore}}"
+                  style="border: none; outline: none;"
+                />
+              </div>
+            </div>
+
+            <div class="fs7ScoreCalculationSDiv">
+              <div>
+                <h4 class="fs7TotalHeading">+ 7 = Mean Item Score</h4>
+              </div>
+              <div class="fs7InputFieldContainer">
+                <input
+                  type="text"
+                  name="itemScore"
+                  class="radio-custom"
+                  id="itemScore"
+                  value="{{eustachian_tube_dysfunction.itemScore}}"
+                  style="border: none; outline: none;"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="fs7SymptomsContainer">
+            <div class="fs7SymptomsText">
+              <h4>Are these symptoms in :</h4>
+            </div>
+
+            <div class="fs7SymptomsContainerCheckboxes flex ml-1">
+              <div>
+                <div class="radio-main">
+                  <input type="radio" name="disfunctions_in"
+                  class="radio-custom" id="fs7symptoms_1" value="Left ear only"
+                  {% if value == eustachian_tube_dysfunction.disfunctions_in %}checked{% endif %}/>
+                  <label htmlFor="fs7symptoms_1">Left ear only</label>
+                </div>
+              </div>
+              <div>
+                <div class="radio-main">
+                  <input type="radio" name="disfunctions_in"
+                  class="radio-custom" id="fs7symptoms_2" value="Right ear only"
+                  {% if value == eustachian_tube_dysfunction.disfunctions_in %}checked{% endif %}/>
+                  <label htmlFor="fs7symptoms_2">Right ear only</label>
+                </div>
+              </div>
+              <div>
+                <div class="radio-main">
+                  <input type="radio" name="disfunctions_in"
+                  class="radio-custom" id="fs7symptoms_3" value="Both ears"
+                  {% if value == eustachian_tube_dysfunction.disfunctions_in %}checked{% endif %}/>
+                  <label htmlFor="fs7symptoms_3">Both ears</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- page4 -->
+    <div class="FormPage4Main flex">
+      <div class="FormPage4Section1">
+        <div class="sleepnessScaleSection">
+          <div class="formPage4Head">
+            <h2>THE EPWORTH SLEEPINESS SCALE</h2>
+          </div>
+          <div class="sleepnessScaleDetail">
+            <ul>
+              <li>
+                <div>
+                  <p class="">
+                    How likely are you to doze off or fall asleep in the
+                    following scenarios in contrast to just feeling tired?
+                  </p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p class="">
+                    Even if have not done some of these thing recently, try to
+                    work out how they would have affected you.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p class="">
+                    Use the scale to choose the most appropriate number for each
+                    situation and circle the correct one.
+                  </p>
+                </div>
+              </li>
+            </ul>
+            <div class="sleepnessScaleSectionMeasures">
+              <p>
+                <b>0 = Would Never Doze</b>
+              </p>
+              <p>
+                <b>1 = Slight Chance of Dozing</b>
+              </p>
+              <p>
+                <b>2 = Moderate Chance of Dozing</b>
+              </p>
+              <p>
+                <b>3 = High Chance of Dozing</b>
+              </p>
+            </div>
+            <div class="page4Table">
+              <div class="page4TableHead flex">
+                <div class="page4TableHeadPart1">
+                  <h4>SCENARIO</h4>
+                  <p class="italics">ESCENARIO</p>
+                </div>
+                <div class="page4TableHeadPart2">
+                  <h4>CHANCE OF DOZING</h4>
+                </div>
+              </div>
+              <div id="EPWORTHSLEEPINESSSCALE">
+                {% for item in the_epworth_sleepiness_scale %}
+                <div class="flex">
+                  <div class="page4TableItem1">
+                    <p>{{ item.condition }}</p>
+                    <p class="italics">{{ item.conditionTranslate }}</p>
+                  </div>
+                  <div class="page4TableItem2 flex flex-wrap">
+                    {% for value in '01234' %}
+                    <div key="{{ value }}">
+                      <div class="radio-main">
+                        <input type="radio" name="fs7_hear_history_detail{{ item.id }}"
+                          class="radio-custom"
+                          id="fs7_hear_history_detail_{{ item.id }}_{{ value }}"
+                          value="{{ value }}"
+                          {% if value == item.chanceOfDozing %}checked{% endif %}>
+                        <label for="fs7_hear_history_detail_{{ item.id }}_{{ value }}">
+                          {{ value }}
+                        </label>
+                      </div>
+                    </div>
+                  {% endfor %}
+                  </div>
+                </div>
+              {% endfor %}
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="HearingHistorySection">
+          <div class="formPage4Head">
+            <h2>HEARING HISTORY QUESTIONNAIRE</h2>
+            <p>Please circle the appropriate response for each symptom.</p>
+          </div>
+          <div class="HearingHistoryDetail">
+            <div class="page4Table">
+              <div id="HEARINGHISTORYQUESTIONNAIRE">
+                {% for item in hearing_history_questionnaire %}
+                <div class="flex">
+                  <div class="page4TableItem1">
+                    <p>{{ item.condition }}</p>
+                    <p class="italics">{{ item.conditionTranslate }}</p>
+                  </div>
+                  <div class="page4TableItem2 flex flex-wrap">
+                    <div class="radio-main">
+                      <input type="radio" name="medhistory{{item.id}}"
+                      class="radio-custom" id="fs5no{{item.id}}" value="Yes" {% if item.chanceOfDozing == "Yes" %}checked{% endif %}>
+                      <label for="fs5no1{{item.id}}">Yes </label>
+                    </div>
+                    <div class="radio-main">
+                      <input type="radio" name="medhistory{{item.id}}"
+                      class="radio-custom" id="fs5no{{item.id}}" value="No" {% if item.chanceOfDozing == "No" %}checked{% endif %}>
+                      <label for="fs5no1{{item.id}}">No </label>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="FormPage4Section2">
+        <div class="formPage4Head">
+          <h2>ALLERGY HISTORY QUESTIONNAIRE</h2>
+        </div>
+        <div>
+          <div id="appElementALLERGYHISTORYQUESTIONNAIRE">
+            {% for item in allergy_history_questionnaire.questions %}
+            <div class="flex">
+              <div class="page4TableItem1">
+                <p>{{ item.question }}</p>
+                <p class="italics">{{ item.translation }}</p>
+              </div>
+              <div class="page4TableItem2 flex flex-wrap">
+                <div class="page4TableItem1">
+                  <p class="italics">{{ item.response }}</p>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+
+          </div>
+          <div>
+            <div>
+              <p>
+                What prescription medication have you tried for allergies? For
+                how long?
+              </p>
+            </div>
+            <div class="page4Table">
+              <div class="page4TableHead flex">
+                <div class="page4TableHeadPart1">
+                  <h4>PRESCRIPTION</h4>
+                </div>
+                <div class="page4TableHeadPart2">
+                  <h4>FOR HOW LONG</h4>
+                </div>
+              </div>
+
+              <div id="ALLERGYHISTORYQUIZPrescription">
+                {% for item in allergy_history_questionnaire.perscriptions %}
+                <div class="flex">
+                  <div class="page4TableItem1">
+                    <p>{{ item.perscription }}</p>
+                  </div>
+                  <div class="page4TableItem2 flex flex-wrap">
+                    <div class="page4TableItem1">
+                      <p class="italics">{{ item.duration }}</p>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="HearingHistorySection">
+              <div class="formPage4Head">
+                <p>
+                  Please circle the appropriate number 1-5 according to
+                  severity:
+                </p>
+                <p>
+                  <b>0 = no problem | 1 = mild | 5 = very severe</b>
+                </p>
+              </div>
+              <div class="HearingHistoryDetail">
+                <div class="page4Table">
+                  <div id="ALLERGYHISTORYRightLastTable">
+                    {% for item in allergy_history_questionnaire.list %}
+                    <div class="flex">
+                      <div class="page4TableItem1">
+                        <p>{{ item.condition }}</p>
+                        <p class="italics">{{ item.conditionTranslate }}</p>
+                      </div>
+                      <div class="page4TableItem2 flex flex-wrap">
+                        {% for value in '01234' %}
+                          <div key="{{ value }}">
+                            <div class="radio-main">
+                              <input type="radio" name="fs7_hear_history_detail{{ item.id }}"
+                                class="radio-custom"
+                                id="fs7_hear_history_detail_{{ item.id }}_{{ value }}"
+                                value="{{ value }}"
+                                {% if value == item.chanceOfDozing %}checked{% endif %}>
+                              <label for="fs7_hear_history_detail_{{ item.id }}_{{ value }}">
+                                {{ value }}
+                              </label>
+                            </div>
+                          </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

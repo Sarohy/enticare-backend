@@ -56,7 +56,7 @@ class GeneratePDF(APIView):
                 # Write the payload data to the template file
                 temp_name = "general/templates/"
                 cv_template = "output.html"  # Assuming the template file name is "cv.html"
-                open(temp_name + cv_template, "w").write(render_to_string('f.html', {
+                open(temp_name + cv_template, "w").write(render_to_string('simple.html', {
                     'start': start,
                     'patient_info': patient_info,
                     'other_address': other_address,
