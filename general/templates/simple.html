@@ -2,7 +2,23 @@
 <html lang="en">
   <head>
     <title>Document</title>
+  <style>
+    /* Apply styles to all HTML elements */
+    * {
+      margin: 0;
+      padding: 0;
+      font-size: 10px;
+    }
+
+    /* Optionally, specify different styles for specific elements */
+    h1, h2, h3, h4, h5, h6 {
+      font-size: 12px; /* Larger font size for headings */
+    }
+
+    /* Add more rules for other specific elements as needed */
+  </style>
   </head>
+  
   <body>
     <div>
       <div>
@@ -20,7 +36,7 @@
       <div>
          <div>
             <div style="display: flex; align-items: center;">
-              <div style="margin-right: 10px;">
+              <div>
                 <h4 style="font-size: 14px;">REASON FOR TODAYS VISIT</h4>
               </div>
               <input
@@ -31,7 +47,7 @@
               />
             </div>
             <div style="display: flex; align-items: center; margin-top: 10px;">
-              <div style="margin-right: 10px;">
+              <div>
                 <h4 style="font-size: 14px;">DATE:</h4>
               </div>
               <input
@@ -46,7 +62,7 @@
 
         <div>
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div>
               <h4>RELATIONSHIP TO PATIENT:</h4>
             </div>
             <input
@@ -57,7 +73,7 @@
             />
           </div>
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div>
               <h4>LEGAL GUARDIAN:</h4>
             </div>
             <input
@@ -74,7 +90,7 @@
 
         <div>
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div>
               <h4>Patient Name:</h4>
             </div>
             <input
@@ -86,7 +102,7 @@
           </div>
 
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div>
               <h4>DOB</h4>
             </div>
             <input
@@ -97,7 +113,7 @@
           </div>
 
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div>
               <h4>Age:</h4>
             </div>
             <input type="text" name="age" value="{{patient_info.age}}" style="border: none; outline: none;" />
@@ -107,7 +123,7 @@
         <div>
           {% comment %} <div class="fs2CheckboxConatiner fs2CheckboxConatinerMargin"> {% endcomment %}
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div>
               <p>Sex:</p>
             </div>
             {% comment %} <div class="flex flex-wrap" id="genderSelection"> {% endcomment %}
@@ -130,7 +146,7 @@
           </div>
 
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div>
               <p>Marital Status:</p>
             </div>
             <div>
@@ -180,7 +196,7 @@
         </div>
         <div>
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>Mailing Address:</h4>
             </div>
             <input
@@ -192,7 +208,7 @@
           </div>
 
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>City:</h4>
             </div>
             <input
@@ -204,7 +220,7 @@
           </div>
 
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>State:</h4>
             </div>
             <input
@@ -216,7 +232,7 @@
           </div>
 
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>Zip</h4>
             </div>
             <input
@@ -230,7 +246,7 @@
 
         <div>
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>Other Address:</h4>
             </div>
             <input
@@ -242,7 +258,7 @@
           </div>
 
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>City:</h4>
             </div>
             <input
@@ -254,7 +270,7 @@
           </div>
 
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>State:</h4>
             </div>
             <input
@@ -266,7 +282,7 @@
           </div>
 
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>Zip</h4>
             </div>
             <input
@@ -280,7 +296,7 @@
 
         <div>
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>Home Phone:</h4>
             </div>
             <input
@@ -292,7 +308,7 @@
           </div>
 
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>Cell Phone:</h4>
             </div>
             <input
@@ -304,7 +320,7 @@
           </div>
 
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>Work Phone:</h4>
             </div>
             <input
@@ -318,7 +334,7 @@
 
         <div>
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>
                 Preferred method for appointment reminders
                 <span style="display: block"> (check all that apply): </span>
@@ -370,7 +386,7 @@
 
         <div class="fs2Conatiner">
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>Email (print clearly):</h4>
             </div>
             <input
@@ -384,7 +400,7 @@
 
         <div class="fs2Conatiner">
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>Pharmacy Name & City:</h4>
             </div>
             <input
@@ -396,7 +412,7 @@
           </div>
 
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>Cross Street:</h4>
             </div>
             <input
@@ -408,7 +424,7 @@
           </div>
 
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>Phone:</h4>
             </div>
             <input
@@ -426,7 +442,7 @@
         <h2 class="fs2Heading">REFERRAL INFORMATION:</h2>
         <div class="fs3Container">
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>Referring Facility:</h4>
             </div>
             <input
@@ -438,7 +454,7 @@
           </div>
 
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>Address / Location:</h4>
             </div>
             <input
@@ -451,7 +467,7 @@
         </div>
         <div class="fs3Container">
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>Referring Provider Full Name:</h4>
             </div>
             <input
@@ -462,7 +478,7 @@
             />
           </div>
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>Phone:</h4>
             </div>
             <input
@@ -476,7 +492,7 @@
 
         <div class="fs3Container">
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>Primary Care Physician Full Name:</h4>
             </div>
             <input
@@ -487,7 +503,7 @@
             />
           </div>
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>Phone:</h4>
             </div>
             <input
@@ -508,7 +524,7 @@
         </div>
         <div class="fs3Container">
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>Responsible Party/Guardian (if patient is a minor):</h4>
             </div>
             <input
@@ -519,7 +535,7 @@
             />
           </div>
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>Phone:</h4>
             </div>
             <input
@@ -535,7 +551,7 @@
 
         <div class="fs3Container">
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>PRIMARY INSURANCE CO:</h4>
             </div>
             <input
@@ -546,7 +562,7 @@
             />
           </div>
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>Phone:</h4>
             </div>
             <input
@@ -560,7 +576,7 @@
 
         <div class="fs3Container">
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>Policy Holder Name:</h4>
             </div>
             <input
@@ -571,7 +587,7 @@
             />
           </div>
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>Group #:</h4>
             </div>
             <input
@@ -585,7 +601,7 @@
 
         <div class="fs3Container">
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>Relationship to Patient:</h4>
             </div>
             <input
@@ -597,7 +613,7 @@
           </div>
 
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4 class="fs2DOBText">DOB</h4>
             </div>
             <input
@@ -620,7 +636,7 @@
 
         <div class="fs3Container">
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>SECONDARY INSURANCE CO:</h4>
             </div>
             <input
@@ -632,7 +648,7 @@
             />
           </div>
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>Phone:</h4>
             </div>
             <input
@@ -646,7 +662,7 @@
 
         <div class="fs3Container">
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>Policy Holder Name:</h4>
             </div>
             <input
@@ -658,7 +674,7 @@
             />
           </div>
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>Group #:</h4>
             </div>
             <input
@@ -672,7 +688,7 @@
 
         <div class="fs3Container">
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>Relationship to Patient:</h4>
             </div>
             <input
@@ -684,7 +700,7 @@
           </div>
 
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4 class="fs2DOBText">DOB</h4>
             </div>
             <input
@@ -706,7 +722,7 @@
         <div>
           <div class="fs4Conatiner">
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
                 <h4 style="font-size: 1rem">Race</h4>
               </div>
               {% comment %} <div
@@ -793,7 +809,7 @@
           </div>
           <div class="fs4Conatiner">
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
                 <h4 style="font-size: 1rem">Ethnicity</h4>
               </div>
               {% comment %} <div
@@ -835,7 +851,7 @@
           </div>
           <div class="fs4Conatiner">
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
                 <h4 style="font-size: 1rem">Preferred Language:</h4>
               </div>
 
@@ -846,7 +862,7 @@
               > {% endcomment %}
                 <!-- <div style="display: flex" ></div> -->
               <div style="display: flex; align-items: center; margin-top: 10px;">
-                <div style="margin-right: 10px;">
+                <div >
                     <div class="radio-main">
                       <input type="radio" name="preffered_language"
                       class="radio-custom" id="Englishpreffered_language"
@@ -895,7 +911,7 @@
 
           <div class="fs4Container">
             <div style="display: flex; align-items: center; margin-top: 10px;">
-              <div style="margin-right: 10px;">
+              <div >
                 <h4>Name:</h4>
               </div>
               <input
@@ -906,7 +922,7 @@
               />
             </div>
             <div style="display: flex; align-items: center; margin-top: 10px;">
-              <div style="margin-right: 10px;">
+              <div >
                 <h4>DOB:</h4>
               </div>
               <input
@@ -917,7 +933,7 @@
               />
             </div>
             <div style="display: flex; align-items: center; margin-top: 10px;">
-              <div style="margin-right: 10px;">
+              <div >
                 <h4>Phone:</h4>
               </div>
               <input
@@ -928,7 +944,7 @@
               />
             </div>
             <div style="display: flex; align-items: center; margin-top: 10px;">
-              <div style="margin-right: 10px;">
+              <div >
                 <h4>Relation to patient:</h4>
               </div>
               <input
@@ -943,7 +959,7 @@
 
           <div class="fs4Container">
             <div style="display: flex; align-items: center; margin-top: 10px;">
-              <div style="margin-right: 10px;">
+              <div >
                 <h4>Name:</h4>
               </div>
               <input
@@ -954,7 +970,7 @@
               />
             </div>
             <div style="display: flex; align-items: center; margin-top: 10px;">
-              <div style="margin-right: 10px;">
+              <div >
                 <h4>DOB:</h4>
               </div>
               <input
@@ -965,7 +981,7 @@
               />
             </div>
             <div style="display: flex; align-items: center; margin-top: 10px;">
-              <div style="margin-right: 10px;">
+              <div >
                 <h4>Phone:</h4>
               </div>
               <input
@@ -976,7 +992,7 @@
               />
             </div>
             <div style="display: flex; align-items: center; margin-top: 10px;">
-              <div style="margin-right: 10px;">
+              <div >
                 <h4>Relation to patient:</h4>
               </div>
               <input
@@ -995,7 +1011,7 @@
 
           <div class="fs4Container">
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
                 <h4>Name:</h4>
               </div>
               <input
@@ -1006,7 +1022,7 @@
               />
             </div>
             <div style="display: flex; align-items: center; margin-top: 10px;">
-              <div style="margin-right: 10px;">
+              <div >
                 <h4>DOB:</h4>
               </div>
               <input
@@ -1017,7 +1033,7 @@
               />
             </div>
             <div style="display: flex; align-items: center; margin-top: 10px;">
-              <div style="margin-right: 10px;">
+              <div >
                 <h4>Phone:</h4>
               </div>
               <input
@@ -1028,7 +1044,7 @@
               />
             </div>
             <div style="display: flex; align-items: center; margin-top: 10px;">
-              <div style="margin-right: 10px;">
+              <div >
                 <h4>Relation to patient:</h4>
               </div>
               <input
@@ -1050,7 +1066,7 @@
       <div class="formSection1">
         <div class="sectionHeightWeight flex justify-content-between">
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>What is your Weight?</h4>
             </div>
             <input
@@ -1062,7 +1078,7 @@
             />
           </div>
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="margin-right: 10px;">
+            <div >
               <h4>What is your Height?</h4>
             </div>
             <input
@@ -1429,7 +1445,7 @@
             <div class="former_smoker">
               <p>If <b>"Former Smoker"</b></p>
               <div style="display: flex; align-items: center; margin-top: 10px;">
-                <div style="margin-right: 10px;">
+                <div >
                   <p>How long did you smoke?</p>
                 </div>
                 <input
@@ -1440,7 +1456,7 @@
                 />
               </div>
               <div style="display: flex; align-items: center; margin-top: 10px;">
-                <div style="margin-right: 10px;">
+                <div >
                   <p>When did you quit?</p>
                 </div>
                 <input
@@ -1453,8 +1469,8 @@
             </div>
             <div class="current_smoker" style="margin-top: 1em">
               <p>If <b>"Current Smoker"</b></p>
-              <div class="flex align-items-center socialHistorySmoker">
-                <div style="width: 535px">
+                <div style="display: flex; align-items: center; margin-top: 10px;">
+                  <div>
                   <p>How many packs per day do you smoke?</p>
                 </div>
                 <input
@@ -1463,8 +1479,8 @@
                   style="border: none; outline: none;"
                 />
               </div>
-              <div class="flex align-items-center socialHistorySmoker">
-                <div style="width: 310px; margin-top: 1em">
+              <div style="display: flex; align-items: center; margin-top: 10px;">
+                <div >
                   <p>How long have you smoked?</p>
                 </div>
                 <input
