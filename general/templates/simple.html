@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta charset="UTF-8">
     <title>Document</title>
   <style>
     /* Apply styles to all HTML elements */
@@ -34,22 +35,18 @@
 
       <!-- <Form> -->
       <div>
-         <div>
-            <div style="display: flex; align-items: center;">
-              <div>
+         <div style="display: flex; align-items: center;">
+            <div style="display: flex; flex: 1;">
                 <h4 style="font-size: 14px;">REASON FOR TODAYS VISIT</h4>
-              </div>
               <input
                 type="text"
                 value="{{ start.reason_for_visit }}"
                 name="reason_for_visit"
-                style="border: none; outline: none; flex: 1;"
+                style="border: none; outline: none; flex: 1; width:100%"
               />
             </div>
-            <div style="display: flex; align-items: center; margin-top: 10px;">
-              <div>
+            <div style="display:flex; flex: 1; margin-right: 10px;">
                 <h4 style="font-size: 14px;">DATE:</h4>
-              </div>
               <input
                 type="text"
                 value="{{ start.date }}"
@@ -58,12 +55,13 @@
               />
             </div>
          </div>
+         
 
 
-        <div>
+        <div style="display:flex;">
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div>
-              <h4>RELATIONSHIP TO PATIENT:</h4>
+            <div style="display:flex;">
+              <h4 style="width:330px">RELATIONSHIP TO PATIENT:</h4>
             </div>
             <input
               type="text"
@@ -73,8 +71,8 @@
             />
           </div>
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div>
-              <h4>LEGAL GUARDIAN:</h4>
+            <div style="display:flex;">
+              <h4 style="width:240px">LEGAL GUARDIAN:</h4>
             </div>
             <input
               type="text"
@@ -88,47 +86,43 @@
       <div>
         <h2>PATIENT INFORMATION:</h2>
 
-        <div>
+        <div style="display:flex; align-items: center">
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div>
-              <h4>Patient Name:</h4>
-            </div>
-            <input
+            <div style="display:flex;">
+              <h4 style="width:200px">Patient Name:</h4>
+              <input
               type="text"
               name="patient_name"
               value="{{patient_info.patient_name}}"
               style="border: none; outline: none;"
             />
-          </div>
-
-          <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div>
-              <h4>DOB</h4>
             </div>
-            <input
+          </div>
+            <div style="display:flex;">
+              <h4 style="width:50px">DOB</h4>
+              <input
               name="DOB"
               value="{{patient_info.DOB}}"
               style="border: none; outline: none;"
             />
-          </div>
-
-          <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div>
-              <h4>Age:</h4>
             </div>
+          </div>
+            <div style="display:flex;">
+              <h4 style="width:40px">Age:</h4>
             <input type="text" name="age" value="{{patient_info.age}}" style="border: none; outline: none;" />
+            </div>
           </div>
         </div>
 
-        <div>
+        <div style="display: flex;">
           {% comment %} <div class="fs2CheckboxConatiner fs2CheckboxConatinerMargin"> {% endcomment %}
-          <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div>
+          <div style="display: flex; align-items: center; margin-top: 10px; width:150px">
+            <div style="display:flex;">
               <p>Sex:</p>
             </div>
             {% comment %} <div class="flex flex-wrap" id="genderSelection"> {% endcomment %}
               <!-- <div style="display: flex" id="genderSelection"></div> -->
-              <div>
+              <div style="display:flex; width:100px; justify-content: space-between; align-items: center">
                 <div>
                   <div>
                     <input type="radio" name="sex" class="radio-custom" id="Male"
@@ -145,12 +139,12 @@
             </div>
           </div>
 
-          <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div>
-              <p>Marital Status:</p>
+          <div style="display: flex; align-items: center; margin-top: 10px; width:500px">
+            <div style="display:flex;">
+              <p style="width:80px">Marital Status:</p>
             </div>
-            <div>
-                <div>
+            <div style="display:flex; width:300px; justify-content: space-between; align-items:center">
+                <div style="display:flex;">
                   <div class="radio-main">
                     <input type="radio" name="maritial_status"
                     class="radio-custom" id="Single" value="Single"
@@ -158,7 +152,7 @@
                   </div>
                   <p class="italics checkboxTranslate"></p>
                 </div >
-                <div>
+                <div style="display:flex;">
                   <div class="radio-main">
                     <input type="radio" name="maritial_status"
                     class="radio-custom" id="Married" value="Married"
@@ -166,7 +160,7 @@
                   </div>
                   <p class="italics checkboxTranslate"></p>
                 </div>
-                <div>
+                <div style="display:flex;">
                   <div class="radio-main">
                     <input type="radio" name="maritial_status"
                     class="radio-custom" id="Divorced" value="Divorced"
@@ -174,7 +168,7 @@
                   </div>
                   <p class="italics checkboxTranslate"></p>
                 </div>
-                <div class="flex">
+                <div style="display:flex;">
                   <div class="radio-main">
                     <input type="radio" name="maritial_status"
                     class="radio-custom" id="Widowed" value="Widowed"
@@ -182,7 +176,7 @@
                   </div>
                   <p class="italics checkboxTranslate"></p>
                 </div>
-                <div>
+                <div style="display:flex;">
                   <div class="radio-main">
                     <input type="radio" name="maritial_status"
                     class="radio-custom" id="Other" value="Other"
@@ -196,7 +190,7 @@
         </div>
         <div>
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div >
+            <div style="display:flex; flex: 1;">
               <h4>Mailing Address:</h4>
             </div>
             <input
@@ -205,10 +199,10 @@
               value="{{mailing_address.address}}"
               style="border: none; outline: none;"
             />
-          </div>
+          
 
-          <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div >
+          
+            <div style="display:flex; flex: 1;">
               <h4>City:</h4>
             </div>
             <input
@@ -217,10 +211,7 @@
               value="{{mailing_address.city}}"
               style="border: none; outline: none;"
             />
-          </div>
-
-          <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div >
+            <div style="display:flex; flex: 1;">
               <h4>State:</h4>
             </div>
             <input
@@ -229,10 +220,9 @@
               value="{{mailing_address.state}}"
               style="border: none; outline: none;"
             />
-          </div>
 
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div >
+            <div style="display:flex; flex: 1;">
               <h4>Zip</h4>
             </div>
             <input
@@ -244,10 +234,10 @@
           </div>
         </div>
 
-        <div>
+        <div style="display:flex">
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div >
-              <h4>Other Address:</h4>
+            <div style="display:flex;">
+              <h4 style="width:250px">Other Address:</h4>
             </div>
             <input
               type="text"
@@ -258,8 +248,8 @@
           </div>
 
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div >
-              <h4>City:</h4>
+            <div style="display:flex;">
+              <h4 style="width:50px">City:</h4>
             </div>
             <input
               type="text"
@@ -270,8 +260,8 @@
           </div>
 
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div >
-              <h4>State:</h4>
+            <div style="display:flex;">
+              <h4 style="width:60px">State:</h4>
             </div>
             <input
               type="text"
@@ -283,7 +273,7 @@
 
           <div style="display: flex; align-items: center; margin-top: 10px;">
             <div >
-              <h4>Zip</h4>
+              <h4 style="width:40px">Zip</h4>
             </div>
             <input
               type="text"
@@ -294,10 +284,10 @@
           </div>
         </div>
 
-        <div>
+        <div style="display:flex; align-items:center">
           <div style="display: flex; align-items: center; margin-top: 10px;">
             <div >
-              <h4>Home Phone:</h4>
+              <h4 style="width:170px">Home Phone:</h4>
             </div>
             <input
               type="text"
@@ -309,7 +299,7 @@
 
           <div style="display: flex; align-items: center; margin-top: 10px;">
             <div >
-              <h4>Cell Phone:</h4>
+              <h4 style="width:130px">Cell Phone:</h4>
             </div>
             <input
               type="text"
@@ -321,7 +311,7 @@
 
           <div style="display: flex; align-items: center; margin-top: 10px;">
             <div >
-              <h4>Work Phone:</h4>
+              <h4 style="width:150px">Work Phone:</h4>
             </div>
             <input
               type="text"
@@ -410,9 +400,7 @@
               style="border: none; outline: none;"
             />
           </div>
-
-          <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div >
+            <div style="display: flex; align-items: center; margin-top: 10px;">
               <h4>Cross Street:</h4>
             </div>
             <input
@@ -421,7 +409,6 @@
               value="{{cross_street}}"
               style="border: none; outline: none;"
             />
-          </div>
 
           <div style="display: flex; align-items: center; margin-top: 10px;">
             <div >
@@ -440,10 +427,10 @@
       </div>
       <div class="fs3MainContainer">
         <h2 class="fs2Heading">REFERRAL INFORMATION:</h2>
-        <div class="fs3Container">
+        <div class="fs3Container" style="display:flex;">
           <div style="display: flex; align-items: center; margin-top: 10px;">
             <div >
-              <h4>Referring Facility:</h4>
+              <h4 style="width:230px">Referring Facility:</h4>
             </div>
             <input
               type="text"
@@ -455,7 +442,7 @@
 
           <div style="display: flex; align-items: center; margin-top: 10px;">
             <div >
-              <h4>Address / Location:</h4>
+              <h4 style="width:240px">Address / Location:</h4>
             </div>
             <input
               type="text"
@@ -465,10 +452,10 @@
             />
           </div>
         </div>
-        <div class="fs3Container">
+        <div class="fs3Container" style="display:flex;">
           <div style="display: flex; align-items: center; margin-top: 10px;">
             <div >
-              <h4>Referring Provider Full Name:</h4>
+              <h4 style="width:330px;">Referring Provider Full Name:</h4>
             </div>
             <input
               type="text"
@@ -479,7 +466,7 @@
           </div>
           <div style="display: flex; align-items: center; margin-top: 10px;">
             <div >
-              <h4>Phone:</h4>
+              <h4 style="width:60px;">Phone:</h4>
             </div>
             <input
               type="text"
@@ -490,10 +477,10 @@
           </div>
         </div>
 
-        <div class="fs3Container">
+        <div class="fs3Container" style="display:flex;">
           <div style="display: flex; align-items: center; margin-top: 10px;">
             <div >
-              <h4>Primary Care Physician Full Name:</h4>
+              <h4 style="width:365px;">Primary Care Physician Full Name:</h4>
             </div>
             <input
               type="text"
@@ -504,7 +491,7 @@
           </div>
           <div style="display: flex; align-items: center; margin-top: 10px;">
             <div >
-              <h4>Phone:</h4>
+              <h4 style="width:60px">Phone:</h4>
             </div>
             <input
               type="text"
@@ -522,10 +509,10 @@
             <label htmlFor="self_pay" style="font-size: 1rem"> Self Pay </label>
           </div>
         </div>
-        <div class="fs3Container">
+        <div class="fs3Container" style="display:flex;">
           <div style="display: flex; align-items: center; margin-top: 10px;">
             <div >
-              <h4>Responsible Party/Guardian (if patient is a minor):</h4>
+              <h4 style="width:540px">Responsible Party/Guardian (if patient is a minor):</h4>
             </div>
             <input
               type="text"
@@ -536,7 +523,7 @@
           </div>
           <div style="display: flex; align-items: center; margin-top: 10px;">
             <div >
-              <h4>Phone:</h4>
+              <h4 style="width:80px">Phone:</h4>
             </div>
             <input
               type="text"
@@ -549,10 +536,10 @@
 
         <h4 class="fs3HeadingInsurance">Primary Insurance Detail</h4>
 
-        <div class="fs3Container">
+        <div class="fs3Container" style="display:flex;">
           <div style="display: flex; align-items: center; margin-top: 10px;">
             <div >
-              <h4>PRIMARY INSURANCE CO:</h4>
+              <h4 style="width:310px">PRIMARY INSURANCE CO:</h4>
             </div>
             <input
               type="text"
@@ -563,7 +550,7 @@
           </div>
           <div style="display: flex; align-items: center; margin-top: 10px;">
             <div >
-              <h4>Phone:</h4>
+              <h4 style="width:70px">Phone:</h4>
             </div>
             <input
               type="text"
@@ -574,7 +561,7 @@
           </div>
         </div>
 
-        <div class="fs3Container">
+        <div class="fs3Container" style="display:flex;">
           <div style="display: flex; align-items: center; margin-top: 10px;">
             <div >
               <h4>Policy Holder Name:</h4>
@@ -851,7 +838,7 @@
           </div>
           <div class="fs4Conatiner">
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div >
+            <div>
                 <h4 style="font-size: 1rem">Preferred Language:</h4>
               </div>
 
@@ -861,7 +848,7 @@
                 id="languageSelection"
               > {% endcomment %}
                 <!-- <div style="display: flex" ></div> -->
-              <div style="display: flex; align-items: center; margin-top: 10px;">
+              <div style="display: flex; align-items: center; margin-top: 10px; width:180px; justify-content: space-between;">
                 <div >
                     <div class="radio-main">
                       <input type="radio" name="preffered_language"
@@ -909,10 +896,10 @@
             </li>
           </ul>
 
-          <div class="fs4Container">
+          <div class="fs4Container" style="display:flex;">
             <div style="display: flex; align-items: center; margin-top: 10px;">
               <div >
-                <h4>Name:</h4>
+                <h4 style="padding-right: 30px;">Name:</h4>
               </div>
               <input
                 type="text"
@@ -923,7 +910,7 @@
             </div>
             <div style="display: flex; align-items: center; margin-top: 10px;">
               <div >
-                <h4>DOB:</h4>
+                <h4 style="padding-right: 25px;">DOB:</h4>
               </div>
               <input
                 type="text"
@@ -934,7 +921,7 @@
             </div>
             <div style="display: flex; align-items: center; margin-top: 10px;">
               <div >
-                <h4>Phone:</h4>
+                <h4 style="padding-right: 35px;">Phone:</h4>
               </div>
               <input
                 type="text"
@@ -957,10 +944,10 @@
             </div>
           </div>
 
-          <div class="fs4Container">
+          <div class="fs4Container" style="display:flex;">
             <div style="display: flex; align-items: center; margin-top: 10px;">
               <div >
-                <h4>Name:</h4>
+                <h4 style="padding-right: 30px;">Name:</h4>
               </div>
               <input
                 type="text"
@@ -971,7 +958,7 @@
             </div>
             <div style="display: flex; align-items: center; margin-top: 10px;">
               <div >
-                <h4>DOB:</h4>
+                <h4 style="padding-right: 25px;">DOB:</h4>
               </div>
               <input
                 type="text"
@@ -982,7 +969,7 @@
             </div>
             <div style="display: flex; align-items: center; margin-top: 10px;">
               <div >
-                <h4>Phone:</h4>
+                <h4 style="padding-right: 35px;">Phone:</h4>
               </div>
               <input
                 type="text"
@@ -1377,7 +1364,6 @@
               <div>
                 <div>
                   <p>{{ item.condition }}</p>
-                  <p class="italics">{{ item.translation }}</p>
                 </div>
                 <div>
                   <div>
@@ -1797,34 +1783,35 @@
               </p>
             </div>
           {% comment %} </div> {% endcomment %}
-          <div class="fs7ScoreTable">
-            <div id="EUSTACHIANTUBEDYSFUNCTION">
-              {% for item in eustachian_tube_dysfunction.list %}
-                <div class="flex">
-                  <div class="page4TableItem1">
-                    <p>{{ item.condition }}</p>
-                    <p class="italics">{{ item.translation }}</p>
-                  </div>
-                  <div class="page4TableItem2 flex flex-wrap">
-                    {% for value in '01234' %}
-                    <div key="{{ value }}">
-                      <div class="radio-main">
-                        <input type="radio" name="fs7_hear_history_detail{{ item.id }}"
-                          class="radio-custom"
-                          id="fs7_hear_history_detail_{{ item.id }}_{{ value }}"
-                          value="{{ value }}"
-                          {% if value == item.range %}checked{% endif %}>
-                        <label for="fs7_hear_history_detail_{{ item.id }}_{{ value }}">
+            <div class="fs7ScoreTable">
+              <div id="EUSTACHIANTUBEDYSFUNCTION">
+                {% for item in eustachian_tube_dysfunction.list %}
+                  <div style="display: flex; align-items: center;">
+                    <div class="page4TableItem1">
+                      <p>{{ item.condition }}</p>
+                    </div>
+                    <div style="display: flex; align-items: center; width:180px; justify-content: space-between;">
+                      {% for value in '01234' %}
+                      <div key="{{ value }}" style="display: flex; align-items: center;">
+                        <label style="display: flex; align-items: center; margin: 0; cursor: pointer;">
+                          <input
+                            type="radio"
+                            name="fs7_hear_history_detail{{ item.id }}"
+                            style="margin-right: 5px;"
+                            id="fs7_hear_history_detail_{{ item.id }}_{{ value }}"
+                            value="{{ value }}"
+                            {% if value == item.range %}checked{% endif %}
+                          />
                           {{ value }}
                         </label>
                       </div>
+                      {% endfor %}
                     </div>
-                  {% endfor %}
                   </div>
-                </div>
-              {% endfor %}
+                {% endfor %}
+              </div>
             </div>
-          </div>
+
 
           {% comment %} <div class="fs7ScoreCalculation">
             <div>
@@ -1984,12 +1971,12 @@
               </div>
               <div id="EPWORTHSLEEPINESSSCALE">
                 {% for item in the_epworth_sleepiness_scale %}
-                <div class="flex">
+                <div class="flex" style="display:flex">
                   <div class="page4TableItem1">
                     <p>{{ item.condition }}</p>
-                    <p class="italics">{{ item.conditionTranslate }}</p>
+                    {% comment %} <p class="italics">{{ item.conditionTranslate }}</p> {% endcomment %}
                   </div>
-                  <div class="page4TableItem2 flex flex-wrap">
+                  <div class="page4TableItem2 flex flex-wrap" style="display:flex; width: 180px; justify-content: space-between; align-items: center;">
                     {% for value in '01234' %}
                     <div key="{{ value }}">
                       <div class="radio-main">
@@ -2022,12 +2009,12 @@
             <div class="page4Table">
               <div id="HEARINGHISTORYQUESTIONNAIRE">
                 {% for item in hearing_history_questionnaire %}
-                <div class="flex">
+                <div class="flex" style="display:flex">
                   <div class="page4TableItem1">
                     <p>{{ item.condition }}</p>
-                    <p class="italics">{{ item.conditionTranslate }}</p>
+                    {% comment %} <p class="italics">{{ item.conditionTranslate }}</p> {% endcomment %}
                   </div>
-                  <div class="page4TableItem2 flex flex-wrap">
+                  <div class="page4TableItem2 flex flex-wrap" style="display:flex; width: 70px; justify-content: space-between; align-items: center;">
                     <div class="radio-main">
                       <input type="radio" name="medhistory{{item.id}}"
                       class="radio-custom" id="fs5no{{item.id}}" value="Yes" {% if item.chanceOfDozing == "Yes" %}checked{% endif %}>
@@ -2058,7 +2045,7 @@
             <div class="flex">
               <div class="page4TableItem1">
                 <p>{{ item.question }}</p>
-                <p class="italics">{{ item.translation }}</p>
+                {% comment %} <p class="italics">{{ item.translation }}</p> {% endcomment %}
               </div>
               <div class="page4TableItem2 flex flex-wrap">
                 <div class="page4TableItem1">
@@ -2117,12 +2104,12 @@
                 <div class="page4Table">
                   <div id="ALLERGYHISTORYRightLastTable">
                     {% for item in allergy_history_questionnaire.list %}
-                    <div class="flex">
+                    <div class="flex" style="display:flex;">
                       <div class="page4TableItem1">
                         <p>{{ item.condition }}</p>
                         <p class="italics">{{ item.conditionTranslate }}</p>
                       </div>
-                      <div class="page4TableItem2 flex flex-wrap">
+                      <div class="page4TableItem2 flex flex-wrap" style="display:flex; width: 180px; justify-content: space-between; align-items: center;">
                         {% for value in '01234' %}
                           <div key="{{ value }}">
                             <div class="radio-main">
