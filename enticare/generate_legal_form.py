@@ -20,54 +20,6 @@ def generate_legal_form_pdf(data):
 
     _canvas = canvas.Canvas('legal_form.pdf', A4)
 
-    # Data that needs to be written dynamically
-    # data = {
-    #   "patient_auth": {
-    #     "auth_signature": {
-    #       "signature": "bishi",
-    #       "font_family": "Caveat, cursive"
-    #     },
-    #     "auth_current_date": "2023-07-16",
-    #     "auth_relation": "son",
-    #     "auth_expiry": "2023-08-17",
-    #     "patient_name": "bisharat",
-    #     "auth_date": "2023-08-16"
-    #   },
-    #   "patient_financial_policy": {
-    #     "patient_financial_signature": {
-    #       "signature": "test",
-    #       "font_family": "'Marck Script', cursive"
-    #     },
-    #     "patient_financial_name": "test",
-    #     "patient_financial_date": "2023-08-23"
-    #   },
-    #   "medication_history_consent": {
-    #     "patient_consent_name": "test",
-    #     "medication_consent_date": "2023-08-17",
-    #     "patient_financial_signature": {
-    #       "signature": "test",
-    #       "font_family": "Meddon, cursive"
-    #     }
-    #   },
-    #   "communication_consent": {
-    #     "communication_patient_name": "test",
-    #     "communication_consent_signature": {
-    #       "signature": "bishi",
-    #       "font_family": "Pacifico, cursive"
-    #     },
-    #     "communication_consent_date": "2023-08-16"
-    #   },
-    #   "procedures_in_office": {
-    #     "office_procedures_signature": {
-    #       "signature": "test",
-    #       "font_family": "Caveat, cursive"
-    #     },
-    #     "procedure_print_name": "test",
-    #     "procedure_date": "2023-08-11",
-    #     "procedure_relation": "test"
-    #   }
-    # }
-
     # Main font that will be used for every text
     _canvas.setFont('main_font', 10)
     # Draw patient authorization static pdf at full page to write dynamic data on it
