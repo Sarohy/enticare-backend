@@ -211,7 +211,11 @@
               value="{{patient_info.mailing_address.city}}"
               style="border: none; outline: none;"
             />
-            <div style="display:flex; flex: 1;">
+          </div>
+        </div>
+        <div>
+          <div style="display: flex; align-items: center; margin-top: 10px;">
+            <div style="display:flex;">
               <h4>State:</h4>
             </div>
             <input
@@ -220,9 +224,7 @@
               value="{{patient_info.mailing_address.state}}"
               style="border: none; outline: none;"
             />
-
-          <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="display:flex; flex: 1;">
+            <div style="display:flex;">
               <h4>Zip</h4>
             </div>
             <input
@@ -234,9 +236,9 @@
           </div>
         </div>
 
-        <div style="display:flex">
+        <div>
           <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="display:flex;">
+            <div style="display:flex; flex: 1;">
               <h4 style="width:250px">Other Address:</h4>
             </div>
             <input
@@ -245,10 +247,8 @@
               value="{{patient_info.other_address.address}}"
               style="border: none; outline: none;"
             />
-          </div>
 
-          <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div style="display:flex;">
+            <div style="display:flex; flex: 1;">
               <h4 style="width:50px">City:</h4>
             </div>
             <input
@@ -258,7 +258,8 @@
               style="border: none; outline: none;"
             />
           </div>
-
+        </div>
+        <div>
           <div style="display: flex; align-items: center; margin-top: 10px;">
             <div style="display:flex;">
               <h4 style="width:60px">State:</h4>
@@ -269,10 +270,7 @@
               value="{{ patient_info.other_address.state}}"
               style="border: none; outline: none;"
             />
-          </div>
-
-          <div style="display: flex; align-items: center; margin-top: 10px;">
-            <div >
+            <div style="display:flex;">
               <h4 style="width:40px">Zip</h4>
             </div>
             <input
