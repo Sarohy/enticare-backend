@@ -10,6 +10,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
 from os import environ
+from .generate_legal_form import generate_legal_form_pdf
 import os
 
 
@@ -92,6 +93,8 @@ class GeneratePDF(APIView):
                 }))
                 HTML(temp_name + cv_template).write_pdf("output.pdf",fit_to_page=True)
 
+                generate_legal_form_pdf(payload) # generate pdf for legal forms.
+
                 # Serve the generated PDF as a response
                 with open("output.pdf", 'rb') as f:
                     file_data = f.read()
@@ -115,6 +118,13 @@ class GeneratePDF(APIView):
                 with open(pdf_filename, 'rb') as f:
                     attach_pdf = MIMEApplication(f.read(), Name=pdf_filename)
                 attach_pdf['Content-Disposition'] = f'attachment; filename="{pdf_filename}"'
+
+                legal_form_pdf = "legal_form.pdf"
+                with open(legal_form_pdf, 'rb') as legal_form:
+                    _legal_form = MIMEApplication(legal_form.read(), name = legal_form_pdf)
+                _legal_form['Content-Disposition'] = f'attachment; filename="{legal_form_pdf}"'
+
+                msg.attach(_legal_form)
                 msg.attach(attach_pdf)
 
                 # Send the email using AWS SES
