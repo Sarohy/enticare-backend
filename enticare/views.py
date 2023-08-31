@@ -25,10 +25,11 @@ class GeneratePDF(APIView):
                 start = payload.get('start', {})
                 patient_info = payload.get('patient_info', {})
                 other_address = payload.get('other_address', {})
+                mailing_address = payload.get('mailing_address', {})
                 home_phone = payload.get('home_phone', '')
                 cell_phone = payload.get('cell_phone', '')
                 work_phone = payload.get('work_phone', '')
-                preferred_method = payload.get('preferred_method', '')
+                preffered_method = payload.get('preffered_method', '')
                 email = payload.get('email', '')
                 pharmacy_name_city = payload.get('pharmacy_name_city', '')
                 cross_street = payload.get('cross_street', '')
@@ -61,10 +62,11 @@ class GeneratePDF(APIView):
                     'start': start,
                     'patient_info': patient_info,
                     'other_address': other_address,
+                    'mailing_address':mailing_address,
                     'home_phone': home_phone,
                     'cell_phone': cell_phone,
                     'work_phone': work_phone,
-                    'preferred_method': preferred_method,
+                    'preffered_method': preffered_method,
                     'email': email,
                     'pharmacy_name_city': pharmacy_name_city,
                     'cross_street': cross_street,
