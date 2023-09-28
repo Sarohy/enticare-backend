@@ -56,6 +56,7 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'https://e8a0-110-39-21-190.ngrok-free.app',
     'https://develop.d2y5o3q875wm9w.amplifyapp.com'
+    'https://online-form.enticare.com'
     # Add other allowed origins here
 ]
 
